@@ -6,7 +6,6 @@
 /*#include "BonnePaye.h"
  */
 #define NBACQUI 23
-#define NBCOURRIER 80
 #define TAILLE 120
 
 
@@ -36,11 +35,11 @@ if(x>=90 && y>=90 && x<=120 && y<=110){
     }
   }
 
-int affiche_acquisition_vente_aff(joueur j,acquisition acqui){
+int affiche_acquisition_vente_aff(joueur *j,acquisition *acqui){
  int x,y,choix = 1;
   MLV_Event event;
   /* Dessine une boîte affichant les valeurs de l'acquisition*/ 
-  MLV_draw_adapted_text_box(50,50,"Acquisition: %s\n Prix d'achat : %d\n Prix de vente : %d\n Montant de la Commission :  %d\n Voulez vous la vendre ? ",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,acqui.titre,acqui.achat,acqui.vente,acqui.commission);
+  MLV_draw_adapted_text_box(50,50,acqui->titre,9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
   
   MLV_draw_text_box(90,90,30,10,"OUI",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
   MLV_draw_text_box(140,140,30,10,"NON",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
@@ -54,7 +53,7 @@ while(choix == 1){
 			  NULL);
   }while( event != MLV_MOUSE_BUTTON);
   /* On vérifie si il est sur oui ou sur non*/ 
- if(x>=90 && y>=90 && x<=120 && y<=100){
+ if(x>=120 && y>=90 && x<=140 && y<=100){ /*if(x>=90 && y>=90 && x<=120 && y<=100)*/
     return choix;
   }else if(x>=140 && y>=140 && x<=170 && y<=100)
     return 0;
@@ -74,19 +73,19 @@ void achat_acquisition(joueur *j, acquisition *acqui){
   printf("On achete \n");
   acqui->valeur = j->numJ;
   j->total = j->total-acqui->achat;
-  j->sesAcquisitions[j->nbAcquisitions]=*acqui;
-  j->nbAcquisitions ++;
+  j->sesAcquisitions[j->nb_acquisition]=*acqui;/*  *acqui */
+  j->nb_acquisition ++;
 }
 
-void vente_acquisition(joueur j){
+void vente_acquisition(joueur *j){
   int i=0;
   /*Parcours de la liste d'acquisition + affichage (dans l'affichage il y a le choix de ventes ou non de l'acquisition*/ 
-  while(i<j.nbAcquisitions && affiche_acquisition_vente_aff(j,j.sesAcquisitions[i])==0){
+  while(i<j->nb_acquisition && affiche_acquisition_vente_aff(j,&j->sesAcquisitions[i])==0){
     i++;
   }
-  j.sesAcquisitions[i].valeur=0;
-  j.total = j.total+j.sesAcquisitions[i].vente;
-  j.nbAcquisitions --;
+  j->sesAcquisitions[i].valeur=0;
+  j->total = j->total+j->sesAcquisitions[i].vente;
+  j->nb_acquisition --;
 }
 
 
