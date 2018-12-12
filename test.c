@@ -16,6 +16,8 @@ int main(){
   j[1].numJ=1;
   j[2].numJ=2;
   j[1].total = 50000;
+  j[1].epargne=1500;
+  j[1].pret=3000;
   j[3].numJ=3;
   j[4].numJ=4;
   MLV_create_window( "beginner - 4 - texts and boxes", "texts and boxes", 1000, 800);
