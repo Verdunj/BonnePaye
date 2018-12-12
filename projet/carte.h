@@ -4,7 +4,7 @@
 
 #define MAX 500
 #define NBCOURRIER 50
-#define NBACQUI 16
+#define NBACQUI 23
 #define NBEVEN 23
 
 typedef struct{

@@ -1,8 +1,6 @@
-#include "carte.h"
-#define NBACQUI 23
-#define MAX 1000
-#define NBCOURRIER 80
-#define TAILLE 120
+#include "projet/carte.h"
+#include "projet/joueur.h"
+
 
 
 
