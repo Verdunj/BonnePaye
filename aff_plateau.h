@@ -25,3 +25,5 @@ void case_25a27(joueur j);
 void case_28a30(joueur j);
 
 void case_31a32(joueur j);
+
+void stat_j(joueur *j);
