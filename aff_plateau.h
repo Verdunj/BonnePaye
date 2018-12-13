@@ -1,8 +1,10 @@
-#include "carte.h"
-#define NBACQUI 23
-#define MAX 1000
-#define NBCOURRIER 80
-#define TAILLE 120
+#ifndef _AFF_PLATEAU_H_
+#define _AFF_PLATEAU_H_
+
+#include "projet/carte.h"
+#include "projet/joueur.h"
+#include "projet/courrier.h"
+
 
 
 
@@ -27,3 +29,8 @@ void case_25a27(joueur j);
 void case_28a30(joueur j);
 
 void case_31a32(joueur j);
+
+void stat_j(joueur *j);
+
+
+#endif

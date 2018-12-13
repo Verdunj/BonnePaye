@@ -115,16 +115,16 @@ void case_17a20(joueur j){
 
 void case_21a24(joueur j){
  if(j.c>=20 && j.c<=23){
-    if(j.numJ==0){
+    if(j.numJ==1){
       MLV_draw_filled_circle(900-(125*(j.c-19)),575,10,MLV_COLOR_BLUE);
     }
-    else if(j.numJ==1){
+    else if(j.numJ==2){
       MLV_draw_filled_circle(930-(125*(j.c-19)),575,10,MLV_COLOR_YELLOW);
     }
-    else if(j.numJ==2){
+    else if(j.numJ==3){
       MLV_draw_filled_circle(900-(125*(j.c-19)),605,10,MLV_COLOR_RED);
     }
-    else if(j.numJ==3){
+    else if(j.numJ==4){
       MLV_draw_filled_circle(930-(125*(j.c-19)),605,10,MLV_COLOR_GREEN);
     }
 
@@ -137,16 +137,16 @@ void case_21a24(joueur j){
 void case_25a27(joueur j){
 
  if(j.c>=24 && j.c<=26){
-    if(j.numJ==0){
+    if(j.numJ==1){
       MLV_draw_filled_circle(400,575-(125*(j.c-23)),10,MLV_COLOR_BLUE);
     }
-    else if(j.numJ==1){
+    else if(j.numJ==2){
       MLV_draw_filled_circle(430,575-(125*(j.c-23)),10,MLV_COLOR_YELLOW);
     }
-    else if(j.numJ==2){
+    else if(j.numJ==3){
       MLV_draw_filled_circle(400,605-(125*(j.c-23)),10,MLV_COLOR_RED);
     }
-    else if(j.numJ==3){
+    else if(j.numJ==4){
       MLV_draw_filled_circle(430,605-(125*(j.c-23)),10,MLV_COLOR_GREEN);
     }
 
@@ -162,16 +162,16 @@ void case_25a27(joueur j){
 void case_28a30(joueur j){
 
  if(j.c>=27 && j.c<=29){
-    if(j.numJ==0){
+    if(j.numJ==1){
       MLV_draw_filled_circle(400+(125*(j.c-26)),200,10,MLV_COLOR_BLUE);
     }
-    else if(j.numJ==1){
+    else if(j.numJ==2){
       MLV_draw_filled_circle(430+(125*(j.c-26)),200,10,MLV_COLOR_YELLOW);
     }
-    else if(j.numJ==2){
+    else if(j.numJ==3){
       MLV_draw_filled_circle(400+(125*(j.c-26)),230,10,MLV_COLOR_RED);
     }
-    else if(j.numJ==3){
+    else if(j.numJ==4){
       MLV_draw_filled_circle(430+(125*(j.c-26)),230,10,MLV_COLOR_GREEN);
     }
 
@@ -188,16 +188,16 @@ void case_28a30(joueur j){
 void case_31a32(joueur j){
 
  if(j.c>=30 && j.c<=31){
-    if(j.numJ==0){
+    if(j.numJ==1){
       MLV_draw_filled_circle(775,200+(125*(j.c-29)),10,MLV_COLOR_BLUE);
     }
-    else if(j.numJ==1){
+    else if(j.numJ==2){
       MLV_draw_filled_circle(805,200+(125*(j.c-29)),10,MLV_COLOR_YELLOW);
     }
-    else if(j.numJ==2){
+    else if(j.numJ==3){
       MLV_draw_filled_circle(775,230+(125*(j.c-29)),10,MLV_COLOR_RED);
     }
-    else if(j.numJ==3){
+    else if(j.numJ==4){
       MLV_draw_filled_circle(805,230+(125*(j.c-29)),10,MLV_COLOR_GREEN);
     }
 
@@ -206,5 +206,94 @@ void case_31a32(joueur j){
   
 
 
+ }
 }
+
+void stat_j(joueur *j){
+  int i,x;
+  MLV_draw_text(20,450,"Assurance",MLV_COLOR_WHITE);
+  MLV_draw_text(20,460,"Médecin",MLV_COLOR_WHITE);
+  MLV_draw_text(100,450,"Assurance",MLV_COLOR_WHITE);
+  MLV_draw_text(100,460,"Voiture",MLV_COLOR_WHITE);
+  /* On affiche les statistiques des joueurs (epargne total pret et aussi si il possède oui ou non une assurance voiture/medecin */
+  for(i=1;i<=j[0].numJ;i++){
+    if(i==1){
+      MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_BLUE,j[i].total);
+      MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_BLUE,j[i].pret);
+      MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_BLUE,j[i].epargne);
+      MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_BLUE);
+      MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_BLUE);
+      for(x=0;x<j[i].nb_courrier;x++){
+	if(est_carte_assurance(j[i].sesCourriers[x])){
+	  if(est_carte_medecin(j[i].sesCourriers[x])){
+	    MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_BLUE);
+	  }else{
+	    MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_BLUE);
+	  }
+	}
+
+      }
+    }
+
+  else if(i==2){
+    MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_YELLOW,j[i].total);
+    MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_YELLOW,j[i].pret);
+    MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_YELLOW,j[i].epargne);
+    MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+    MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+
+    for(x=0;x<j[i].nb_courrier;x++){
+      if(est_carte_assurance(j[i].sesCourriers[x])){
+	if(est_carte_medecin(j[i].sesCourriers[x])){
+	  MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+	}else{
+	  MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+	}
+      }
+    }
+  }
+ 
+
+ else if(i==3){
+   MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_RED,j[i].total);
+   MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_RED,j[i].pret);
+   MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_RED,j[i].epargne);
+   MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_RED);
+   MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_RED);
+   for(x=0;x<j[i].nb_courrier;x++){
+     if(est_carte_assurance(j[i].sesCourriers[x])){
+       if(est_carte_medecin(j[i].sesCourriers[x])){
+	 MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_RED);
+       }else{
+	 MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_RED);
+       }
+     }
+   }
+ }
+
+
+    else if(i==4){
+      MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_GREEN,j[i].total);
+      MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_GREEN,j[i].pret);
+      MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_GREEN,j[i].epargne);
+      MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_GREEN);
+      MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_GREEN);
+      for(x=0;x<j[i].nb_courrier;x++){
+	if(est_carte_assurance(j[i].sesCourriers[x])){
+	  if(est_carte_medecin(j[i].sesCourriers[x])){
+	    MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_GREEN);
+	  }else{
+	    MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_GREEN);
+	  }
+
+
+	}
+
+      }
+    }
+      
+}
+
+MLV_actualise_window();
+
 }
