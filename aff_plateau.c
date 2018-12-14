@@ -291,9 +291,20 @@ void stat_j(joueur *j){
 
       }
     }
-      
 }
 
 MLV_actualise_window();
 
+}
+
+
+void aff_jeu(joueur *j){
+  int i;
+  MLV_clear_window(MLV_COLOR_WHITE);
+  afficher_plateau();
+  for(i=1;i<=j[0].numJ;i++){
+    case_1a6(j[i]);
+  }
+  stat_j(j);
+  MLV_actualise_window();
 }

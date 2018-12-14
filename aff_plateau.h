@@ -1,9 +1,10 @@
 #ifndef _AFF_PLATEAU_H_
 #define _AFF_PLATEAU_H_
 
+#include "projet/courrier.h"
 #include "projet/carte.h"
 #include "projet/joueur.h"
-#include "projet/courrier.h"
+
 
 
 

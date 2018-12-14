@@ -3,6 +3,7 @@
 
 #include "projet/carte.h"
 #include "projet/joueur.h"
+#include <MLV/MLV_all.h>
 
 
 
@@ -11,11 +12,15 @@ int est_disponible(acquisition acqui);
 
 void achat_acquisition(joueur *j, acquisition *acqui);
 
+void achat_acquisition_o(joueur *j,acquisition *acqui);
+
 void vente_acquisition(joueur *j);
+
+void vente_acquisition_o(joueur *j);
 
 void piocher_acquisition(acquisition * lesacqui,joueur *j);
 
-int acquisition_commission(int nbjoueur);
+int acquisition_commission(joueur *j);
 
 void affiche_acquisition_achat_aff(joueur *j,acquisition *acqui);
 

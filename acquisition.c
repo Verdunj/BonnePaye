@@ -75,12 +75,48 @@ void achat_acquisition(joueur *j, acquisition *acqui){
   j->sesAcquisitions[j->nb_acquisition]=*acqui;/*  *acqui */
   j->nb_acquisition ++;
 }
+/* Achat acquisition pour l'ia, si il possède plus de 500€ après l'achat de l'acquisition il valide l'achat */
+void achat_acquisition_o(joueur *j, acquisition *acqui){
+  if(j->total-(acqui->achat-500)>0){
+    acqui->valeur = j->numJ;
+    j->total = j->total-acqui->achat;
+    j->sesAcquisitions[j->nb_acquisition]=*acqui;
+    j->nb_acquisition ++;
+  }
+}
+/* Il prend l'acquisition lui rapportant le plus d'argent */
+/* La vérification si c'est une IA se fait de le main */ 
+void vente_acquisition_o(joueur *j){
+  int i=0, n=0,x=0;
+  
+  while(x<j->nb_acquisition){
+    if(j->sesAcquisitions[i].valeur == j->numJ){
+      if(j->sesAcquisitions[i].vente>j->sesAcquisitions[n].vente){
+	n=i;
+      }
+      x++;
+    }
+    i++;
+  }
+  if(j->nb_acquisition!=0){
+    j->sesAcquisitions[n].valeur=0;
+    j->total = j->total+j->sesAcquisitions[n].vente;
+    j->nb_acquisition --;
+  }
+
+}
 
 void vente_acquisition(joueur *j){
-  int i=0;
+  int i=0,x=0;
   /*Parcours de la liste d'acquisition + affichage (dans l'affichage il y a le choix de ventes ou non de l'acquisition*/ 
-  while(i<j->nb_acquisition && affiche_acquisition_vente_aff(j,&j->sesAcquisitions[i])==0){
-    i++;
+  while(x<j->nb_acquisition){
+      if(j->sesAcquisitions[i].valeur == j->numJ){
+	x++;
+	if(affiche_acquisition_vente_aff(j,&j->sesAcquisitions[i])==1){
+	  x=j->nb_acquisition;
+	}
+      }
+      i++;
   }
   j->sesAcquisitions[i].valeur=0;
   j->total = j->total+j->sesAcquisitions[i].vente;
@@ -96,15 +132,27 @@ void piocher_acquisition(acquisition * lesacqui,joueur *j){
   while(est_disponible(lesacqui[alea])==0){
     alea=rand()%NBACQUI;
   }
-  
+  if(j->type==1){
   affiche_acquisition_achat_aff(j,&lesacqui[alea]);
+  }else{
+    achat_acquisition_o(j,&lesacqui[alea]);
+  }
+  }
+/* On regarde quelle lancer dé est le plus haut et on récupère le numJ du lancer de dé */
+int acquisition_commission(joueur *j){
+  int temp,jetG=0,numG,i;
+  for(i=1;i<=j[0].numJ;i++){
+    temp=(rand()%5)+1;
+    if(temp>jetG){
+      jetG=temp;
+      numG=j[i].numJ;
+    }
+    
+  }
+  return numG;
+
 }
 
-/*int acquisition_commission(int nbjoueur){
-
-
-}
-*/
 void initialiser_acquisition(acquisition * tab){
   strcpy(tab[0].titre,"Déguisement de super héro\n Prix d'achat : 450€\n Prix de vente : 1200€\n Montant de la Commission :  100€\n Voulez vous l'acheter ? ");
   tab[0].achat=450;
@@ -118,7 +166,7 @@ void initialiser_acquisition(acquisition * tab){
   tab[1].commission=300;
   tab[1].valeur=0;
   
-  strcpy(tab[2].titre,"Stand de glace\n Prix d'achat : 3000€\n Prix de vente : 7500€\n Montant de la Commission : 300€\nVoulez vous l'acheter?");
+  strcpy(tab[2].titre,"Stande de glace\n Prix d'achat : 3000€\n Prix de vente : 7500€\n Montant de la Commission : 300€\nVoulez vous l'acheter?");
   tab[2].achat=3000;
   tab[2].vente=7500;
   tab[2].commission=300;
