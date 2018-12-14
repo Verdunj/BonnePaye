@@ -25,5 +25,7 @@ void case_courrier(courrier liste[], joueur *j);
 
 void paye_courrier(joueur *j, courrier liste[]);
 
+int a_besoin_argent(joueur j);
+
 
 #endif
