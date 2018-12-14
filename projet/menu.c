@@ -3,31 +3,40 @@
 #include <string.h>
 #include "joueur.h"
 #include "sauvegarde.h"
+#include "courrier.h"
+#include "acquisition.h"
 
 
 int menu(){
   int i, type, tour = 0, nb_tour, choix, nb_ordi = 0, nJ = 0, cagnotte;
+  courrier listeC[NBCOURRIER];
+  acquisition listeA[NBACQUI];
   char fichier[MAX];
   FILE *f;
   joueur listeJ[7];
+  
   /* on cherche à savoir si les joueurs veulent charger une partie déjà existante, on en commencer une nouvelle */
   do
     fprintf(stdout, "Nouvelle partie : 1 / Sauvegarde : 2\n");
   while(fscanf(stdin, "%d", &type) != 1 || (type != 1 && type != 2));
+  
   /* s'il choissisent une sauvegarde, on leur demande le chemin de la sauvegarde, puis on la décrypte avec la fonction decrypter */
   if(type == 2){
     do
       fprintf(stdout, "Entrez le chemin du fichier de sauvegarde\n");
     while(fscanf(stdin, "%s", fichier) != 1);
     f = fopen(fichier, "r");
-    decrypter(f, &nJ, listeJ, &cagnotte, &tour, &nb_tour);
+    decrypter(f, &nJ, listeJ, &cagnotte, &tour, &nb_tour, listeC, listeA);
   }
+  
   /* sinon, on définit les paramètres de la nouvelle partie */
   else{
+    
     /* on commence par chercher à connaitre le nombre de joueur (qui ne doit pas dépasser 6 */
     do
       fprintf(stdout, "Entrez le nombre de joueur (au plus 6): ");
     while(fscanf(stdin, "%d", &listeJ[0].numJ) != 1 || listeJ[0].numJ > 6);
+    
     /* on propose ensuite, si le nombre de joueurs est strictement inférieur à 6, s'ils veulent ajouter des ordinateurs et si oui combien (toujours en gardant le nombre total de joueurs inférieur ou égal à 6 */
     if (listeJ[0].numJ < 6){
       do
@@ -40,10 +49,12 @@ int menu(){
       }
       listeJ[0].numJ += nb_ordi; 
     }
+    
     /* on demande le nombre de mois qu'ils souhaitent faire */
     do
       fprintf(stdout, "Entrez le nombre de mois :");
     while(fscanf(stdin, "%d", &nb_tour) != 1);
+    
     /* puis, pour les joueurs autres que ordinateur, on leur demande un pseudo et on définit le type de joueurs qu'ils sont ainsi que les différents paramètre de départ (somme de départ, prêt à 0, epargne à 0 , localisation sur la case 0,... */
     for(i = 1 ; i < listeJ[0].numJ + 1 - nb_ordi ; i++){
       do
@@ -58,6 +69,7 @@ int menu(){
       listeJ[i].epargne = 0;
       listeJ[i].total = 1500;
     }
+    
     /* on fait de même pour les ordinateurs */
 
     for(i = listeJ[0].numJ + 1 - nb_ordi ; i < listeJ[0].numJ + 1 ; i++){
@@ -72,6 +84,8 @@ int menu(){
       listeJ[i].epargne = 0;
       listeJ[i].total = 1500;
     }
+    liste_courrier(listeC);
+    initialiser_acquisition(listeA);
   }
   return 1;
 }
