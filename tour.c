@@ -2,6 +2,8 @@
 #define _TOUR_C_
 
 #include "joueur.h"
+#include "livret_epargne.h"
+#include "plateau.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,15 +21,30 @@ int lance_des(joueur *j, int *cagnotte){
   return j->c;
 }
 
-void tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int *tour, int *nb_tour){
-  int i;
+void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte){
+  int i, choix;
   for(i = nJ ; i < listeJ[0].numJ ; i++){
-    lance_des(listeJ[i], cagnotte);
-    joueur_avance(j, listeJ, listeC, listeE, cagnotte);
+    if(listeJ[i].type == 1){
+      do
+	fprintf(stdout, "Voulez-vous returer de l'argent (attention cela coûtera 150€). (Oui : 1 / Non : 2)\n");
+      while(fscanf(stdin, "%d", &choix) != 1 || (choix != 1 && choix != 2));
+      if(choix == 1)
+	retire_argent_j(&listeJ[i]);
+      if(listeJ[i].c <= 23)
+	depose_joueur(&listeJ[i]);
+    }
+    else{
+      retire_argent_o(&listeJ[i]);
+      if(listeJ[i].c == 0)
+	depose_ordi(&listeJ[i]);
+    }
+    lance_des(&listeJ[i], cagnotte);
+    joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte);
+  }
+}
 
 
 
-    /*ATTENTION POUR LA SAUVEGARDE, LES LISTE DE COURRIERS ET D'ACQUISITION NE PEUVEN TPOUYR L'INSTANT PAS ÊTRE RÉCUPÉRÉES !!!!!!!*/
 
     /* NE PAS OUBLIER NON PLUS DE MODIFIER DANS PLATEAU.C LA FONCTION POUR LES ACQUISITON ET POUR VENDEZ !!!!!!*/
 
