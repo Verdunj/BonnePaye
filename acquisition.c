@@ -69,18 +69,32 @@ int est_disponible(acquisition acqui){
 }
 
 void achat_acquisition(joueur *j, acquisition *acqui){
+  int i,x;
   printf("On achete \n");
   acqui->valeur = j->numJ;
   j->total = j->total-acqui->achat;
-  j->sesAcquisitions[j->nb_acquisition]=*acqui;/*  *acqui */
+  for(i=0;i<NBACQUI;i++){
+    if(j->sesAcquistions[i].valeur==0){
+      x=i;
+      i=i+23;
+    }
+  }
+  j->sesAcquisitions[x]=*acqui;/*  *acqui */
   j->nb_acquisition ++;
 }
 /* Achat acquisition pour l'ia, si il possède plus de 500€ après l'achat de l'acquisition il valide l'achat */
 void achat_acquisition_o(joueur *j, acquisition *acqui){
   if(j->total-(acqui->achat-500)>0){
+    int i,x;
     acqui->valeur = j->numJ;
     j->total = j->total-acqui->achat;
-    j->sesAcquisitions[j->nb_acquisition]=*acqui;
+    for(i=0;i<NBACQUI;i++){
+    if(j->sesAcquistions[i].valeur==0){
+      x=i;
+      i=i+23;
+    }
+  }
+    j->sesAcquisitions[x]=*acqui;
     j->nb_acquisition ++;
   }
 }

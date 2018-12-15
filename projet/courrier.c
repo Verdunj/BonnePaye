@@ -252,7 +252,7 @@ void paye_courrier(joueur *j, courrier  liste[]){
 
 
 
-int main(){
+/*int main(){
   joueur j;
   int i;
   courrier liste[NBCOURRIER];
@@ -271,7 +271,7 @@ int main(){
 
 
 
-
+*/
 
 
 

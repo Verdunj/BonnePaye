@@ -211,10 +211,10 @@ void case_31a32(joueur j){
 
 void stat_j(joueur *j){
   int i,x;
-  MLV_draw_text(20,450,"Assurance",MLV_COLOR_WHITE);
-  MLV_draw_text(20,460,"Médecin",MLV_COLOR_WHITE);
-  MLV_draw_text(100,450,"Assurance",MLV_COLOR_WHITE);
-  MLV_draw_text(100,460,"Voiture",MLV_COLOR_WHITE);
+  MLV_draw_text(20,450,"Assurance",MLV_COLOR_BLACK);
+  MLV_draw_text(20,460,"Médecin",MLV_COLOR_BLACK);
+  MLV_draw_text(100,450,"Assurance",MLV_COLOR_BLACK);
+  MLV_draw_text(100,460,"Voiture",MLV_COLOR_BLACK);
   /* On affiche les statistiques des joueurs (epargne total pret et aussi si il possède oui ou non une assurance voiture/medecin */
   for(i=1;i<=j[0].numJ;i++){
     if(i==1){
@@ -300,6 +300,7 @@ MLV_actualise_window();
 
 void aff_jeu(joueur *j){
   int i;
+  printf("affichage plateau");
   MLV_clear_window(MLV_COLOR_WHITE);
   afficher_plateau();
   for(i=1;i<=j[0].numJ;i++){

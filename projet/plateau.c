@@ -221,9 +221,14 @@ int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition lis
 
 
   else{
-    if (est_case_vendez(j->c) != 0);
+    if (est_case_vendez(j->c) != 0){
+      if(j->type==1){
+	vente_acquisition(j);
+      }else{
+	vente_acquisition_o(j);
+      }
 
-
+    }
     else{
       if(est_case_loterie(j->c) != 0)
 	case_loterie(j, listeJ);

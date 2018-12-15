@@ -33,5 +33,6 @@ void case_31a32(joueur j);
 
 void stat_j(joueur *j);
 
+void aff_jeu(joueur *j);
 
 #endif
