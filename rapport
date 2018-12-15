@@ -1,0 +1,79 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+
+\pagestyle{headings}
+
+\title{Notice Bonne Paye}
+\author{Mérédith CERESOLE et Joris VERDUN}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{I. Organisation}
+
+\subsection{Création des cartes}
+Pour commencer la cration du jeux, nous avons créer les cartes du jeu. Nous avons donc fait les structures des cartes courriers, acquisitions et evenements.
+Nous avons commencer par les courriers et leur avons donner la structures suivantes :
+
+\begin{verbatim}
+typedef struct{
+  char message[MAX]; 
+  int somme;
+  int valeur;
+  int numero;
+} courrier;
+\end{verbatim}
+
+avec :
+\begin{enumerate}
+\item message, qui est une chaine de caractère correspondant le contenue du courrier
+\item somme, qui est la somme à payer (ou la somme reçue dans certains cas)
+\item valeur, qui est égale à 0 si personne n'a pour ce mois tirer le courrier, le numéro du joueur qui à tirer le courrier durant le mois en cours
+\item numéro, qui est le numéro du courrier utiliser plus tard dans les fonctions sur les courriers.
+\end{enumerate}
+
+Puis, nous avons construit les acquisitions :
+
+\begin{verbatim}
+typedef struct{
+  char titre[MAX];
+  int achat;
+  int vente;
+  int commission;
+  int valeur;
+} acquisition;
+\end{verbatim}
+
+avec :
+\begin{enumerate}
+\item titre, qui est le nom de l'acquisition
+\item achat, qui est le prix d'achat de l'acquisition
+\item vente, qui est le prix de vente de l'acquisition, une fois que le joueur tombe sur une case vendez
+\item commission, qui est le prix de la commission lors de la vente
+\item valeur qui fonctionne de la même façon que pour les courriers
+\end{enumerate}
+
+Enfin, on construit les cartes evenements :
+
+\begin{verbatim}
+typedef struct{
+  char message[MAX];
+  int somme;
+} evenement;
+\end{verbatim}
+
+avec :
+\begin{enumerate}
+\item message, qui est l'evenement qui survient
+\item somme, qui est la somme à cotiser à la cagnotte ou à recevoir
+\end{enumerate}
