@@ -14,8 +14,8 @@ void affiche_acquisition_achat_aff(joueur *j,acquisition *acqui){
   MLV_Event event;
   /*Dessine une boîte affichant les valeurs de l'acquisition*/ 
   MLV_draw_adapted_text_box(50,50,acqui->titre,9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);/*,acqui.titre,acqui.achat,acqui.vente,acqui.commission,9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK);*/
-  MLV_draw_text_box(90,90,30,20,"OUI",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
-  MLV_draw_text_box(140,140,30,20,"NON",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_draw_text_box(90,190,30,20,"OUI",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_draw_text_box(140,190,30,20,"NON",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
   MLV_actualise_window();
   /* Récupération de la position de la souris au moment du clique*/ 
 while(choix == 1){
@@ -26,10 +26,10 @@ while(choix == 1){
 			  NULL);
   }while( event != MLV_MOUSE_BUTTON);
   /* On vérifie si il est sur oui ou sur non */ 
-if(x>=90 && y>=90 && x<=120 && y<=110){
+if(x>=90 && y>=190 && x<=120 && y<=210){
     achat_acquisition(j,acqui);
     choix = 0;
-  }else if(x>=140 && y>=140 && x<=170 && y<=110)
+  }else if(x>=140 && y>=190 && x<=170 && y<=210)
     choix = 0;
     }
   }
@@ -40,8 +40,8 @@ int affiche_acquisition_vente_aff(joueur *j,acquisition *acqui){
   /* Dessine une boîte affichant les valeurs de l'acquisition*/ 
   MLV_draw_adapted_text_box(50,50,acqui->titre,9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
   
-  MLV_draw_text_box(90,90,30,10,"OUI",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
-  MLV_draw_text_box(140,140,30,10,"NON",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_draw_text_box(90,190,30,20,"OUI",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_draw_text_box(140,190,30,20,"NON",9,MLV_COLOR_RED,MLV_COLOR_WHITE,MLV_COLOR_BLACK,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
   MLV_actualise_window();
   /* Récupération de la position de la souris au moment du clique*/ 
 while(choix == 1){
@@ -52,9 +52,9 @@ while(choix == 1){
 			  NULL);
   }while( event != MLV_MOUSE_BUTTON);
   /* On vérifie si il est sur oui ou sur non*/ 
- if(x>=120 && y>=90 && x<=140 && y<=100){ /*if(x>=90 && y>=90 && x<=120 && y<=100)*/
+ if(x>=90 && y>=190 && x<=120 && y<=210){ /*if(x>=90 && y>=90 && x<=120 && y<=100)*/
     return choix;
-  }else if(x>=140 && y>=140 && x<=170 && y<=100)
+  }else if(x>=140 && y>=190 && x<=170 && y<=210)
     return 0;
     }
  return 0;
@@ -74,7 +74,7 @@ void achat_acquisition(joueur *j, acquisition *acqui){
   acqui->valeur = j->numJ;
   j->total = j->total-acqui->achat;
   for(i=0;i<NBACQUI;i++){
-    if(j->sesAcquistions[i].valeur==0){
+    if(j->sesAcquisitions[i].valeur==0){
       x=i;
       i=i+23;
     }
@@ -89,7 +89,7 @@ void achat_acquisition_o(joueur *j, acquisition *acqui){
     acqui->valeur = j->numJ;
     j->total = j->total-acqui->achat;
     for(i=0;i<NBACQUI;i++){
-    if(j->sesAcquistions[i].valeur==0){
+    if(j->sesAcquisitions[i].valeur==0){
       x=i;
       i=i+23;
     }
@@ -100,8 +100,8 @@ void achat_acquisition_o(joueur *j, acquisition *acqui){
 }
 /* Il prend l'acquisition lui rapportant le plus d'argent */
 /* La vérification si c'est une IA se fait de le main */ 
-void vente_acquisition_o(joueur *j){
-  int i=0, n=0,x=0;
+void vente_acquisition_o(joueur *j,joueur *TabJ){
+  int i=0, n=0,x=0,gagnant;
   
   while(x<j->nb_acquisition){
     if(j->sesAcquisitions[i].valeur == j->numJ){
@@ -116,12 +116,14 @@ void vente_acquisition_o(joueur *j){
     j->sesAcquisitions[n].valeur=0;
     j->total = j->total+j->sesAcquisitions[n].vente;
     j->nb_acquisition --;
+    gagnant = acquisition_commission(j,TabJ);
+    TabJ[gagnant]->total=TabJ[gagnant]->total+ j->sesAcquisitions[n].commission;
   }
 
 }
 
-void vente_acquisition(joueur *j){
-  int i=0,x=0;
+void vente_acquisition(joueur *j,joueur *TabJ){
+  int i=0,x=0,gagnant;
   /*Parcours de la liste d'acquisition + affichage (dans l'affichage il y a le choix de ventes ou non de l'acquisition*/ 
   while(x<j->nb_acquisition){
       if(j->sesAcquisitions[i].valeur == j->numJ){
@@ -135,6 +137,8 @@ void vente_acquisition(joueur *j){
   j->sesAcquisitions[i].valeur=0;
   j->total = j->total+j->sesAcquisitions[i].vente;
   j->nb_acquisition --;
+ gagnant = acquisition_commission(j, TabJ);
+ TabJ[gagnant]->total=TabJ[gagnant]->total+ j->sesAcquisitions[n].commission;
 }
 
 
@@ -153,9 +157,15 @@ void piocher_acquisition(acquisition * lesacqui,joueur *j){
   }
   }
 /* On regarde quelle lancer dé est le plus haut et on récupère le numJ du lancer de dé */
-int acquisition_commission(joueur *j){
+int acquisition_commission(joueur *j,joueur *TabJ){
   int temp,jetG=0,numG,i;
-  for(i=1;i<=j[0].numJ;i++){
+  for(i=j->numJ;i<=TabJ[0].numJ;i++){
+    temp=(rand()%5)+1;
+    if(temp>jetG){
+      jetG=temp;
+      numG=j[i].numJ;
+    }
+    for(i=1;i<j->numJ;i++){
     temp=(rand()%5)+1;
     if(temp>jetG){
       jetG=temp;

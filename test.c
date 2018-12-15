@@ -22,6 +22,7 @@ int main(){
   j[3].numJ=3;
   j[4].numJ=4;
   j[1].c=25;
+  j[1].type=1;
 
   MLV_create_window( "beginner - 4 - texts and boxes", "texts and boxes", 1000, 800);
   
@@ -30,12 +31,9 @@ int main(){
   for(i=0;i<NBACQUI;i++){
     printf("%s\t %d \t %d\n",acqui[i].titre,acqui[i].achat,acqui[i].vente);
   }
-  aff_jeu(j);
+  /*  aff_jeu(j);*/
+  piocher_acquisition(acqui,&j[1]);
   printf("test");
-  /* afficher_plateau();
-  j[1].c=25;
-  case_1a6(j[1]);
-  stat_j(j);*/
   while(1>0);
   MLV_free_window();
   exit(1);
