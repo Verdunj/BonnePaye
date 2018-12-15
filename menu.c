@@ -99,8 +99,9 @@ int jouer(){
   joueur listeJ[7];
   MLV_create_window( "La Bonne Paye", "Bonne Paye", 1000, 800);
   initialiser(&nb_tour, &numT, listeC, listeA, listeJ,listeE, &nJ,&cagnotte);
+  aff_jeu(listeJ);
   while(quitter != 1 && numT < nb_tour){
-    aff_jeu(listeJ);
+    
     jouer_tour(nJ, listeJ, listeC, listeA, listeE, &cagnotte);
     numT++;
   }

@@ -36,8 +36,10 @@ void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[]
       if(listeJ[i].c == 0)
 	depose_ordi(&listeJ[i]);
     }
+    printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
     lance_des(&listeJ[i], cagnotte);
     joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte);
+    aff_jeu(listeJ);
   }
 }
 

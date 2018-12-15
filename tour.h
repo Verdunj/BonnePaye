@@ -4,6 +4,7 @@
 #include "joueur.h"
 #include "livret_epargne.h"
 #include "plateau.h"
+#include "aff_plateau.h"
 
 int lance_des(joueur *j, int *cagnotte);
 

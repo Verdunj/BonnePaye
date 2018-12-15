@@ -39,7 +39,7 @@ void retire_argent_j(joueur *j){
   int montant;
   do
     fprintf(stdout, "Combien voulez-vous retirer ?\n");
-  while(fscanf(stdin, "%d", &montant) != 0);
+  while(fscanf(stdin, "%d", &montant) != 1);
   while(montant > j->epargne){
     do
       fprintf(stdout, "Vous n'avez pas cette somme sur votre livret, veuillez redonner un montant.\n");
