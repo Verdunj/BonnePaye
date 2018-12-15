@@ -4,6 +4,7 @@
 #include "sauvegarde.h"
 #include "courrier.h"
 #include "acquisition.h"
+#include <MLV/MLV_all.h>
 
 
 int intialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[], joueur listeJ[], int *nJ);

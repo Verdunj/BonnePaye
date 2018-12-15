@@ -77,7 +77,7 @@ void case_evenement(joueur *j, evenement liste[], int *cagnotte){
 }
 
 
-int main(){
+/*int main(){
   joueur j;
   int cagnotte = 50;
   evenement liste[NBEVEN];
@@ -91,7 +91,7 @@ int main(){
   exit(0);
 }
 
-
+*/
 
 
 #endif

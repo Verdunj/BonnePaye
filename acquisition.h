@@ -14,13 +14,13 @@ void achat_acquisition(joueur *j, acquisition *acqui);
 
 void achat_acquisition_o(joueur *j,acquisition *acqui);
 
-void vente_acquisition(joueur *j);
+void vente_acquisition(joueur *j, joueur *TabJ);
 
-void vente_acquisition_o(joueur *j);
+void vente_acquisition_o(joueur *j,joueur *TabJ);
 
 void piocher_acquisition(acquisition * lesacqui,joueur *j);
 
-int acquisition_commission(joueur *j);
+int acquisition_commission(joueur *j,joueur *TabJ);
 
 void affiche_acquisition_achat_aff(joueur *j,acquisition *acqui);
 

@@ -309,3 +309,10 @@ void aff_jeu(joueur *j){
   stat_j(j);
   MLV_actualise_window();
 }
+
+/*void aff_bouton(){
+
+
+
+}
+*/

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <menu.h>
+#include "menu.h"
 
 
 
@@ -95,8 +95,10 @@ int jouer(){
   courrier listeC[NBCOURRIER];
   acquisition listeA[NBACQUI];
   joueur listeJ[7];
+  MLV_create_window( "La Bonne Paye", "Bonne Paye", 1000, 800);
   initialiser(&nb_tour, &numT, listeC, listeA, listeJ, &nJ);
   while(quitter != 1 && numT < nb_tour){
+    aff_jeu(listeJ);
     jouer_tour(&nJ, listeJ, listeC, listeA, listeE, &cagnotte);
     numT++;
   }
