@@ -1,0 +1,149 @@
+\documentclass[a4paper, 11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{eurosym}
+
+\pagestyle{headings}
+
+\title{Rapport Bonne Paye}
+\author{Mérédith CERESOLE et Joris VERDUN}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{I. Organisation}
+
+\subsection{Création des cartes}
+Pour commencer la création du jeux, nous avons créer les cartes du jeu. Nous avons donc fait les structures des cartes courriers, acquisitions et evenements.
+Nous avons commencer par les courriers et leur avons donner la structures suivantes :
+
+\begin{verbatim}
+typedef struct{
+  char message[MAX]; 
+  int somme;
+  int valeur;
+  int numero;
+} courrier;
+\end{verbatim}
+
+avec :
+\begin{enumerate}
+\item message, qui est une chaine de caractère correspondant le contenue du courrier
+\item somme, qui est la somme à payer (ou la somme reçue dans certains cas)
+\item valeur, qui est égale à 0 si personne n'a pour ce mois tirer le courrier, le numéro du joueur qui à tirer le courrier durant le mois en cours
+\item numéro, qui est le numéro du courrier utiliser plus tard dans les fonctions sur les courriers.
+\end{enumerate}
+
+Puis, nous avons construit les acquisitions :
+
+\begin{verbatim}
+typedef struct{
+  char titre[MAX];
+  int achat;
+  int vente;
+  int commission;
+  int valeur;
+} acquisition;
+\end{verbatim}
+
+avec :
+\begin{enumerate}
+\item titre, qui est le nom de l'acquisition
+\item achat, qui est le prix d'achat de l'acquisition
+\item vente, qui est le prix de vente de l'acquisition, une fois que le joueur tombe sur une case vendez
+\item commission, qui est le prix de la commission lors de la vente
+\item valeur qui fonctionne de la même façon que pour les courriers
+\end{enumerate}
+
+Enfin, on construit les cartes evenements :
+
+\begin{verbatim}
+typedef struct{
+  char message[MAX];
+  int somme;
+} evenement;
+\end{verbatim}
+
+avec :
+\begin{enumerate}
+\item message, qui est l'evenement qui survient
+\item somme, qui est la somme à cotiser à la cagnotte ou à recevoir
+\end{enumerate}
+
+
+\subsection{Fonctions sur les cartes}
+On créer ensuite les fonctions qui se rapportent aux cartes créées. L'un s'est alors occupé des fonctions concernant les courriers et les évènements, tandis que l'autre s'est occupé des fonctions sur les acquisitions.
+
+Pour les fonctions concernant les courriers et les évènements, on a les fonctions suivantes:
+\begin{enumerate}
+\item pour les courriers :
+
+\begin{verbatim}
+int liste_courrier(courrier liste[])
+\end{verbatim}
+est la fonction que initialise la liste des courriers.
+Les fonctions :
+
+\begin{verbatim}
+int est_besoin_argent(courrier c); 
+
+int est_carte_assurance(courrier c);
+
+int est_carte_medecin(courrier c);
+
+int est_type_medecin(courrier c);
+
+int est_type_voiture(courrier c);
+\end{verbatim}
+
+qui permettent de différencier les courriers qui implique un évènement particulier. Ces fonctions retournent 1 si elles sont corrcetement executees.
+La fonction :
+\begin{verbatim}
+void afficher_courrier(courrier c);
+\end{verbatim}
+utilisée pour l'affichage d'un courrier sans interface graphique.
+\begin{verbatim}
+void case_courrier(courrier liste[], joueur *j);
+\end{verbatim}
+est la fonction qui exécute ce qu'il se passe lorsque un joueur doit tirer un courrier. Elle tire un courrier au hasard, vérifie que ce courrier n'est pas déjà à quelqu'un, l'affiche, puis si c'est une carte assurance, fait deux cas différents. Si ce n'est pas un ordinateur, il demande au joueur s'il souhaite acheté la carte assurance, et lui fait payer et l'ajoute à ses courriers s'il dit oui. Si c'est un ordinateur, il ne prend l'assurance que s'il a l'argent nécessaire, plus 300\euro{}, plus 10\% du prêt du joueur. Dans tous les cas (sauf si le joueur ne prend pas l'assurance), il ajoute le courrier quelqu'il soit, à la liste des courriers du joueurs, et sa valeur est modifiée pour q'un autre joueur ne le pioche pas tant que le joueur ne la pas remis dans la pioche.
+
+\begin{verbatim}
+void paye_courrier(joueur *j, courrier liste[]);
+\end{verbatim}
+est la fonction qui s'applique à la fin du mois pour faire payer au joueur les courriers qu'il doit payer, et les reposer dans la pioche. Cette fonction vérifie qi le joueur a ou non des assurances et applique les modifications nécessaire en fonction de cela (s'il a l'assurance médecin, il ne paye pas les courriers de type médecin; s'il a l'assurance voiture, il ne paye pas les courriers de type voiture).
+Enfin, la fonction :
+\begin{verbatim}
+int a_besoin_argent(joueur j);
+\end{verbatim}
+regarde si le joueur a ou non piocher durant le mois en cours, des besoin d'argent, afin de pouvoir lui proposer de les jouer en début de tour.
+
+\item pour les acquisition :
+
+
+
+
+
+
+
+
+
+
+\item pour les évènements :
+\begin{verbatim}
+int liste_evenement(evenement liste[]);
+\end{verbatim}
+la fonction qui initialise la liste des évènements.
+\begin{verbatim}
+void afficher_evenement(evenement e);
+\end{verbatim}
+la fonction qui affiche un évènement.
+\begin{verbatim}
+void case_evenement(joueur *j, evenement liste[], int *cagnotte);
+\end{verbatim}
+qui est la fonction qui applique l'évènement. Si la somme est négative, elle ajoute la somme au total du joueur car l'évènement dira garder l'argent, et si la somme est positive, elle la retirera du total du joueur car l'évènement dira cotiser pour la cagnotte.
+\end{enumerate}
+\end{document}
