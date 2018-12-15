@@ -1,8 +1,8 @@
 #ifndef ACQUISITION_H
 #define ACQUISITION_H
 
-#include "projet/carte.h"
-#include "projet/joueur.h"
+#include "carte.h"
+#include "joueur.h"
 #include <MLV/MLV_all.h>
 
 

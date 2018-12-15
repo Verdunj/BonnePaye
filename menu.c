@@ -8,7 +8,7 @@
 
 
 
-int initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[], joueur listeJ[], int *nJ){
+void initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[], joueur listeJ[],evenement listeE[], int *nJ,int *cagnotte){
   int i, type_partie, choix, nb_ordi = 0;
   char fichier[MAX];
   FILE *f;
@@ -19,12 +19,12 @@ int initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[]
   while(fscanf(stdin, "%d", &type_partie) != 1 || (type_partie != 1 && type_partie != 2));
   
   /* s'il choissisent une sauvegarde, on leur demande le chemin de la sauvegarde, puis on la décrypte avec la fonction decrypter */
-  if(type_ppartie == 2){
+  if(type_partie == 2){
     do
       fprintf(stdout, "Entrez le chemin du fichier de sauvegarde\n");
     while(fscanf(stdin, "%s", fichier) != 1);
     f = fopen(fichier, "r");
-    decrypter(f, &nJ, listeJ, &cagnotte, &tour, &nb_tour, listeC, listeA);
+    decrypter(f, nJ, listeJ, cagnotte, tour, nb_tour, listeC, listeA);
   }
   
   /* sinon, on définit les paramètres de la nouvelle partie */
@@ -51,7 +51,7 @@ int initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[]
     /* on demande le nombre de mois qu'ils souhaitent faire */
     do
       fprintf(stdout, "Entrez le nombre de mois :");
-    while(fscanf(stdin, "%d", &nb_tour) != 1);
+    while(fscanf(stdin, "%d", nb_tour) != 1);
     
     /* puis, pour les joueurs autres que ordinateur, on leur demande un pseudo et on définit le type de joueurs qu'ils sont ainsi que les différents paramètre de départ (somme de départ, prêt à 0, epargne à 0 , localisation sur la case 0,... */
     for(i = 1 ; i < listeJ[0].numJ + 1 - nb_ordi ; i++){
@@ -84,8 +84,9 @@ int initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[]
     }
     liste_courrier(listeC);
     initialiser_acquisition(listeA);
+    liste_evenement(listeE);
   }
-  return nb_tour;
+ 
 }
 
 
@@ -94,22 +95,24 @@ int jouer(){
   int quitter = 0, numT = 0, cagnotte = 0, nb_tour = 0, nJ = 0;
   courrier listeC[NBCOURRIER];
   acquisition listeA[NBACQUI];
+  evenement listeE[NBEVEN];
   joueur listeJ[7];
   MLV_create_window( "La Bonne Paye", "Bonne Paye", 1000, 800);
-  initialiser(&nb_tour, &numT, listeC, listeA, listeJ, &nJ);
+  initialiser(&nb_tour, &numT, listeC, listeA, listeJ,listeE, &nJ,&cagnotte);
   while(quitter != 1 && numT < nb_tour){
     aff_jeu(listeJ);
-    jouer_tour(&nJ, listeJ, listeC, listeA, listeE, &cagnotte);
+    jouer_tour(nJ, listeJ, listeC, listeA, listeE, &cagnotte);
     numT++;
   }
   return 1;
 }
     
-int main(){
+/*int main(){
+  printf("test");
   jouer;
   exit(0);
 }
-
+*/
 
 
 

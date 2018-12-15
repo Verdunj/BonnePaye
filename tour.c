@@ -1,9 +1,7 @@
 #ifndef _TOUR_C_
 #define _TOUR_C_
 
-#include "joueur.h"
-#include "livret_epargne.h"
-#include "plateau.h"
+#include "tour.h"
 #include <stdio.h>
 #include <stdlib.h>
 

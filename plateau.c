@@ -8,6 +8,8 @@
 #include "evenement.h"
 #include "pret.h"
 #include "livret_epargne.h"
+#include "plateau.h"
+
 
 
 /*Ne pas oubliez srand(time(NULL))*/
@@ -162,7 +164,7 @@ int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition lis
     
     else{
       if(est_case_acquisiton(j->c) != 0)
-	pioche_acquisition(j, listeA);
+	piocher_acquisition(listeA,j);
 
       
       else{
@@ -223,9 +225,9 @@ int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition lis
   else{
     if (est_case_vendez(j->c) != 0){
       if(j->type==1){
-	vente_acquisition(j);
+	vente_acquisition(j,listeJ);
       }else{
-	vente_acquisition_o(j);
+	vente_acquisition_o(j,listeJ);
       }
 
     }
@@ -247,7 +249,7 @@ int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition lis
 	      
 
 		    
-int main(){
+/*int main(){
   joueur j;
   int  cagnotte = 900;
   joueur listeJ[7];
@@ -265,6 +267,6 @@ int main(){
   printf("%d %d %d\n", j.total, j.c, cagnotte);
   exit(0);
 }
-
+*/
 
 #endif

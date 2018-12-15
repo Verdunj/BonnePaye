@@ -5,6 +5,7 @@
 #include "evenement.h"
 #include "pret.h"
 #include "livret_epargne.h"
+#include "acquisition.h"
 
 int est_case_courrier(int n);
 
