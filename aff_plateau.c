@@ -24,13 +24,19 @@ void case_1a6(joueur j){
       MLV_draw_filled_circle(900-(125*j.c),700,10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(930-(125*j.c),700,10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(930-(125*j.c),700,10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(900-(125*j.c),730,10,MLV_COLOR_RED);
     }
     else if(j.numJ==4){
       MLV_draw_filled_circle(930-(125*j.c),730,10,MLV_COLOR_GREEN);
+    }
+      else if(j.numJ==5){
+      MLV_draw_filled_circle(900-(125*j.c),760,10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(930-(125*j.c),760,10,MLV_COLOR_BLACK);
     }
   }
   else{
@@ -45,7 +51,7 @@ void case_7a11(joueur j){
       MLV_draw_filled_circle(245,700-(125*(j.c-5)),10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(275,700-(125*(j.c-5)),10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(275,700-(125*(j.c-5)),10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(245,730-(125*(j.c-5)),10,MLV_COLOR_RED);
@@ -53,6 +59,13 @@ void case_7a11(joueur j){
     else if(j.numJ==4){
       MLV_draw_filled_circle(275,730-(125*(j.c-5)),10,MLV_COLOR_GREEN);
     }
+    else if(j.numJ==5){
+      MLV_draw_filled_circle(245,760-(125*(j.c-5)),10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(275,760-(125*(j.c-5)),10,MLV_COLOR_BLACK);
+    }
+   
 
   }
   else{
@@ -71,7 +84,7 @@ void case_12a16(joueur j){
       MLV_draw_filled_circle(275+(125*(j.c-10)),45,10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(305+(125*(j.c-10)),45,10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(305+(125*(j.c-10)),45,10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(275+(125*(j.c-10)),75,10,MLV_COLOR_RED);
@@ -79,6 +92,11 @@ void case_12a16(joueur j){
     else if(j.numJ==4){
       MLV_draw_filled_circle(305+(125*(j.c-10)),75,10,MLV_COLOR_GREEN);
     }
+    else if(j.numJ==5){
+      MLV_draw_filled_circle(275+(125*(j.c-10)),105,10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(305+(125*(j.c-10)),105,10,MLV_COLOR_BLACK);
 
  }else {
    case_17a20(j);
@@ -87,7 +105,7 @@ void case_12a16(joueur j){
 
 }
 
-
+}
 
 
 void case_17a20(joueur j){
@@ -97,13 +115,19 @@ void case_17a20(joueur j){
       MLV_draw_filled_circle(900,75+(125*(j.c-15)),10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(930,75+(125*(j.c-15)),10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(930,75+(125*(j.c-15)),10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(900,105+(125*(j.c-15)),10,MLV_COLOR_RED);
     }
     else if(j.numJ==4){
       MLV_draw_filled_circle(930,105+(125*(j.c-15)),10,MLV_COLOR_GREEN);
+    }
+    else if(j.numJ==5){
+      MLV_draw_filled_circle(900,135+(125*(j.c-15)),10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(930,135+(125*(j.c-15)),10,MLV_COLOR_BLACK);
     }
 
  }else{
@@ -119,13 +143,19 @@ void case_21a24(joueur j){
       MLV_draw_filled_circle(900-(125*(j.c-19)),575,10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(930-(125*(j.c-19)),575,10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(930-(125*(j.c-19)),575,10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(900-(125*(j.c-19)),605,10,MLV_COLOR_RED);
     }
     else if(j.numJ==4){
       MLV_draw_filled_circle(930-(125*(j.c-19)),605,10,MLV_COLOR_GREEN);
+    }
+    else if(j.numJ==5){
+      MLV_draw_filled_circle(900-(125*(j.c-19)),635,10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(930-(125*(j.c-19)),635,10,MLV_COLOR_BLACK);
     }
 
  }else{
@@ -141,13 +171,19 @@ void case_25a27(joueur j){
       MLV_draw_filled_circle(400,575-(125*(j.c-23)),10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(430,575-(125*(j.c-23)),10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(430,575-(125*(j.c-23)),10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(400,605-(125*(j.c-23)),10,MLV_COLOR_RED);
     }
     else if(j.numJ==4){
       MLV_draw_filled_circle(430,605-(125*(j.c-23)),10,MLV_COLOR_GREEN);
+    }
+    else if(j.numJ==5){
+      MLV_draw_filled_circle(400,635-(125*(j.c-23)),10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(430,635-(125*(j.c-23)),10,MLV_COLOR_BLACK);
     }
 
  }else{
@@ -166,13 +202,19 @@ void case_28a30(joueur j){
       MLV_draw_filled_circle(400+(125*(j.c-26)),200,10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(430+(125*(j.c-26)),200,10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(430+(125*(j.c-26)),200,10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(400+(125*(j.c-26)),230,10,MLV_COLOR_RED);
     }
     else if(j.numJ==4){
       MLV_draw_filled_circle(430+(125*(j.c-26)),230,10,MLV_COLOR_GREEN);
+    }
+     else if(j.numJ==5){
+      MLV_draw_filled_circle(400+(125*(j.c-26)),260,10,MLV_COLOR_PINK);
+    }
+     else if(j.numJ==6){
+      MLV_draw_filled_circle(430+(125*(j.c-26)),260,10,MLV_COLOR_BLACK);
     }
 
  }else{
@@ -192,7 +234,7 @@ void case_31a32(joueur j){
       MLV_draw_filled_circle(775,200+(125*(j.c-29)),10,MLV_COLOR_BLUE);
     }
     else if(j.numJ==2){
-      MLV_draw_filled_circle(805,200+(125*(j.c-29)),10,MLV_COLOR_YELLOW);
+      MLV_draw_filled_circle(805,200+(125*(j.c-29)),10,MLV_COLOR_PURPLE);
     }
     else if(j.numJ==3){
       MLV_draw_filled_circle(775,230+(125*(j.c-29)),10,MLV_COLOR_RED);
@@ -200,12 +242,16 @@ void case_31a32(joueur j){
     else if(j.numJ==4){
       MLV_draw_filled_circle(805,230+(125*(j.c-29)),10,MLV_COLOR_GREEN);
     }
+    else if(j.numJ==5){
+      MLV_draw_filled_circle(775,230+(125*(j.c-29)),10,MLV_COLOR_PINK);
+    }
+    else if(j.numJ==6){
+      MLV_draw_filled_circle(805,230+(125*(j.c-29)),10,MLV_COLOR_BLACK);
+    }
 
  
   
   
-
-
  }
 }
 
@@ -218,9 +264,10 @@ void stat_j(joueur *j){
   /* On affiche les statistiques des joueurs (epargne total pret et aussi si il possède oui ou non une assurance voiture/medecin */
   for(i=1;i<=j[0].numJ;i++){
     if(i==1){
-      MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_BLUE,j[i].total);
-      MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_BLUE,j[i].pret);
-      MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_BLUE,j[i].epargne);
+      MLV_draw_text(5,5+((i-1)*40),"Joueur : %s",MLV_COLOR_BLUE,j[i].Joueur);
+      MLV_draw_text(5,15+((i-1)*40),"total : %d",MLV_COLOR_BLUE,j[i].total);
+      MLV_draw_text(5,25+((i-1)*40),"pret : %d",MLV_COLOR_BLUE,j[i].pret);
+      MLV_draw_text(5,35+((i-1)*40),"epargne : %d",MLV_COLOR_BLUE,j[i].epargne);
       MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_BLUE);
       MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_BLUE);
       for(x=0;x<j[i].nb_courrier;x++){
@@ -236,18 +283,19 @@ void stat_j(joueur *j){
     }
 
   else if(i==2){
-    MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_YELLOW,j[i].total);
-    MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_YELLOW,j[i].pret);
-    MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_YELLOW,j[i].epargne);
-    MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
-    MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+    MLV_draw_text(5,5+((i-1)*40),"Joueur : %s",MLV_COLOR_PURPLE,j[i].Joueur);
+    MLV_draw_text(5,15+((i-1)*40),"total : %d",MLV_COLOR_PURPLE,j[i].total);
+    MLV_draw_text(5,25+((i-1)*40),"pret : %d",MLV_COLOR_PURPLE,j[i].pret);
+    MLV_draw_text(5,35+((i-1)*40),"epargne : %d",MLV_COLOR_PURPLE,j[i].epargne);
+    MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_PURPLE);
+    MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_PURPLE);
 
     for(x=0;x<j[i].nb_courrier;x++){
       if(est_carte_assurance(j[i].sesCourriers[x])){
 	if(est_carte_medecin(j[i].sesCourriers[x])){
-	  MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+	  MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_PURPLE);
 	}else{
-	  MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_YELLOW);
+	  MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_PURPLE);
 	}
       }
     }
@@ -255,9 +303,10 @@ void stat_j(joueur *j){
  
 
  else if(i==3){
-   MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_RED,j[i].total);
-   MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_RED,j[i].pret);
-   MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_RED,j[i].epargne);
+   MLV_draw_text(5,5+((i-1)*40),"Joueur : %s",MLV_COLOR_RED,j[i].Joueur);
+   MLV_draw_text(5,15+((i-1)*40),"total : %d",MLV_COLOR_RED,j[i].total);
+   MLV_draw_text(5,25+((i-1)*40),"pret : %d",MLV_COLOR_RED,j[i].pret);
+   MLV_draw_text(5,35+((i-1)*40),"epargne : %d",MLV_COLOR_RED,j[i].epargne);
    MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_RED);
    MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_RED);
    for(x=0;x<j[i].nb_courrier;x++){
@@ -273,9 +322,10 @@ void stat_j(joueur *j){
 
 
     else if(i==4){
-      MLV_draw_text(5,5+((i-1)*40),"total : %d",MLV_COLOR_GREEN,j[i].total);
-      MLV_draw_text(5,15+((i-1)*40),"pret : %d",MLV_COLOR_GREEN,j[i].pret);
-      MLV_draw_text(5,25+((i-1)*40),"epargne : %d",MLV_COLOR_GREEN,j[i].epargne);
+      MLV_draw_text(5,5+((i-1)*40),"Joueur : %s",MLV_COLOR_GREEN,j[i].Joueur);
+      MLV_draw_text(5,15+((i-1)*40),"total : %d",MLV_COLOR_GREEN,j[i].total);
+      MLV_draw_text(5,25+((i-1)*40),"pret : %d",MLV_COLOR_GREEN,j[i].pret);
+      MLV_draw_text(5,35+((i-1)*40),"epargne : %d",MLV_COLOR_GREEN,j[i].epargne);
       MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_GREEN);
       MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_GREEN);
       for(x=0;x<j[i].nb_courrier;x++){
@@ -291,6 +341,48 @@ void stat_j(joueur *j){
 
       }
     }
+    else if(i==5){
+      MLV_draw_text(5,5+((i-1)*40),"Joueur : %s",MLV_COLOR_PINK,j[i].Joueur);
+      MLV_draw_text(5,15+((i-1)*40),"total : %d",MLV_COLOR_PINK,j[i].total);
+      MLV_draw_text(5,25+((i-1)*40),"pret : %d",MLV_COLOR_PINK,j[i].pret);
+      MLV_draw_text(5,35+((i-1)*40),"epargne : %d",MLV_COLOR_PINK,j[i].epargne);
+      MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_PINK);
+      MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_PINK);
+      for(x=0;x<j[i].nb_courrier;x++){
+	if(est_carte_assurance(j[i].sesCourriers[x])){
+	  if(est_carte_medecin(j[i].sesCourriers[x])){
+	    MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_PINK);
+	  }else{
+	    MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_PINK);
+	  }
+
+
+	}
+
+      }
+    }
+      else if(i==6){
+      MLV_draw_text(5,5+((i-1)*40),"Joueur : %s",MLV_COLOR_BLACK,j[i].Joueur);
+      MLV_draw_text(5,15+((i-1)*40),"total : %d",MLV_COLOR_BLACK,j[i].total);
+      MLV_draw_text(5,25+((i-1)*40),"pret : %d",MLV_COLOR_BLACK,j[i].pret);
+      MLV_draw_text(5,35+((i-1)*40),"epargne : %d",MLV_COLOR_BLACK,j[i].epargne);
+      MLV_draw_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_BLACK);
+      MLV_draw_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_BLACK);
+      for(x=0;x<j[i].nb_courrier;x++){
+	if(est_carte_assurance(j[i].sesCourriers[x])){
+	  if(est_carte_medecin(j[i].sesCourriers[x])){
+	    MLV_draw_filled_rectangle(40,480+((i-1)*30),20,20,MLV_COLOR_BLACK);
+	  }else{
+	    MLV_draw_filled_rectangle(120,480+((i-1)*30),20,20,MLV_COLOR_BLACK);
+	  }
+
+
+	}
+
+      }
+    }
+  
+    
 }
 
 MLV_actualise_window();
