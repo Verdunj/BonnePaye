@@ -92,7 +92,7 @@ void initialiser(int *nb_tour, int liste_mois[], courrier listeC[], acquisition 
 
 
 int jouer(){
-  int quitter = 0, numT = 0, cagnotte = 0, nb_tour = 0, nJ = 0, i, somme;
+  int quitter = 0, numT = 0, cagnotte = 0, nb_tour = 0, nJ = 1, i, somme;
   int liste_mois[7];
   courrier listeC[NBCOURRIER];
   acquisition listeA[NBACQUI];

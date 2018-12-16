@@ -21,7 +21,8 @@ int lance_des(joueur *j, int *cagnotte){
 
 void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois[], int nb_mois){
   int i, choix;
-  for(i = nJ ; i < listeJ[0].numJ ; i++){
+  for(i = nJ ; i <= listeJ[0].numJ ; i++){
+    tour_joueur(&listeJ[i],listeJ);
     if(liste_mois[listeJ[i].numJ] < nb_mois){
       if(listeJ[i].type == 1){
         do
@@ -31,7 +32,8 @@ void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[]
 	  retire_argent_j(&listeJ[i]);
         if(listeJ[i].c <= 23)
 	  depose_joueur(&listeJ[i]);
-	printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
+	printf("on lance le dé du joueur %s\n",listeJ[i].Joueur);
+	lancer_de_aff();
 	lance_des(&listeJ[i], cagnotte);
 	joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte, liste_mois);
       }
