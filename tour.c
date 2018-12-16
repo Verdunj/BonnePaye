@@ -31,19 +31,14 @@ void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[]
 	  retire_argent_j(&listeJ[i]);
         if(listeJ[i].c <= 23)
 	  depose_joueur(&listeJ[i]);
+	printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
+	lance_des(&listeJ[i], cagnotte);
+	joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte, liste_mois);
       }
       else{
-        retire_argent_o(&listeJ[i]);
-        if(listeJ[i].c == 0)
+	if(listeJ[i].c == 0)
 	  depose_ordi(&listeJ[i]);
-      }
-      printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
-      lance_des(&listeJ[i], cagnotte);
-      joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte, liste_mois);
-      else{
-	if(listeJ[i].c = 0)
-	  depose_ordi(&listeJ[i]);
-        printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
+	printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
 	lance_des(&listeJ[i], cagnotte);
 	joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte, liste_mois);
 	retire_argent_o(&listeJ[i]);
