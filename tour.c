@@ -22,7 +22,7 @@ int lance_des(joueur *j, int *cagnotte){
 void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois[], int nb_mois){
   int i, choix;
   for(i = nJ ; i <= listeJ[0].numJ ; i++){
-    tour_joueur(&listeJ[i],listeJ);
+    tour_joueur(listeJ[i],listeJ,cagnotte,liste_mois,nb_mois,listeC,listeA);
     if(liste_mois[listeJ[i].numJ] < nb_mois){
       if(listeJ[i].type == 1){
         do

@@ -403,15 +403,16 @@ void aff_jeu(joueur *j){
 }
 
 
-void tour_joueur(joueur *j,joueur *tabJ){
+void tour_joueur(joueur j,joueur *tabJ,int *cagnotte,int *liste_mois,int nb_tour, courrier *listeC,acquisition *listeA){
   int i=0,x,y;
   MLV_Event event;
+  printf("%d",&cagnotte);
  
   while(i==0){
-     MLV_draw_adapted_text_box(5,300,"Tour joueur : %s",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j->Joueur);
+     MLV_draw_adapted_text_box(5,300,"Tour joueur : %s",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j.Joueur);
   MLV_draw_text_box(250,250,70,20,"Continuer",9,
 		    MLV_COLOR_GREEN,MLV_COLOR_BLACK,MLV_COLOR_GREEN,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
-  MLV_draw_text_box(60,700,70,20,"PAUSE",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j->Joueur);
+  MLV_draw_text_box(60,700,70,20,"PAUSE",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j.Joueur);
   MLV_actualise_window();
     do{
 event = MLV_get_event(NULL, NULL, NULL,
@@ -425,7 +426,7 @@ event = MLV_get_event(NULL, NULL, NULL,
       i=1;
     }
     else if(x>=60 && y>=700 && x<=130 && y<=720){
-      pause(j,tabJ);
+      pause(j,tabJ,cagnotte,liste_mois,nb_tour,listeC,listeA);
     }
   }
   aff_jeu(tabJ);
@@ -453,11 +454,12 @@ event = MLV_get_event(NULL, NULL, NULL,
     
 }
 
-void pause(joueur *j, joueur *tabJ){
+void pause(joueur j, joueur *tabJ,int *cagnotte,int *liste_mois,int nb_tour, courrier *listeC,acquisition *listeA){
   int i=0,x,y;
   MLV_Event event;
   MLV_clear_window(MLV_COLOR_WHITE);
   MLV_draw_text_box(300,300,80,20,"Continuer",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_draw_text_box(300,400,80,20,"Sauvegarde",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
   MLV_actualise_window();
   while(i==0){
 do{
@@ -470,6 +472,10 @@ event = MLV_get_event(NULL, NULL, NULL,
     }while( event != MLV_MOUSE_BUTTON);
     if(x>=300 && y>=300 && x<= 380 && y <= 320){
       aff_jeu(tabJ);
+      i=1;
+    }
+    else if( x>=300 && y>=400 && x<=380 && y<=420){
+      encrypter(j,tabJ,*cagnotte,liste_mois,nb_tour,listeC,listeA);
       i=1;
     }
   }

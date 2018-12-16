@@ -4,7 +4,7 @@
 #include "courrier.h"
 #include "carte.h"
 #include "joueur.h"
-
+#include "sauvegarde.h"
 
 
 
@@ -35,10 +35,10 @@ void stat_j(joueur *j);
 
 void aff_jeu(joueur *j);
 
-void tour_joueur(joueur *j,joueur *tabJ);
+void tour_joueur(joueur j,joueur *tabJ,int *cagnotte,int *liste_mois,int nb_tour, courrier *listeC,acquisition *listeA);
 
 void lancer_de_aff();
 
-void pause(joueur *j,joueur *tabJ);
+void pause(joueur j,joueur *tabJ,int *cagnotte,int *liste_mois,int nb_tour, courrier *listeC,acquisition *listeA);
 
 #endif
