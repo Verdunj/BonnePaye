@@ -51,17 +51,14 @@ Premièrement, nous avons créer les fonctions qui réalisent les différents é
 
 \subsection{interface carte}
 
-
-
-
-
+Ensuite nous avons ajouté une interface graphique pour les acquisitions pour que l'on puisse voir les valeurs de cette dernière et aussi pouvoir interagir avec le clique pour acheter/ vendre une acquisition lorsque l'occasion se présente. Ces fonctions sont liées à celle crée pour les acquisitions permettant l'achat et la vente de ces dernières.
 
 
 
 
 \subsection{interface plateau}
 
-
+Nous avons récupéré une image de plateau de Bonne Paye et nous avons commencé à créer les fonctions permettant l'affichage du plateau et le positionnement de chaque pion correspondant aux joueurs en récupérant dans les structures des joueurs la case à laquelle ils se positionnents et ainsi faire avec des if des teste et vérifier s'il se trouve sur la bonne case.
 
 
 
@@ -101,8 +98,9 @@ Enfin, nous avons complété l'interface graphique.
 \section{II. Difficultés}
 Tout au long de la réalisation du jeu, nous avons rencontrer différents problèmes. Pour commencer, le grand nombre de modules entremêlés posait des problèmes pour l'exécution du jeu (multiples définitions et définitions croisées). Nous avons donc regroupé certains modules, et placé des ifndef... define... endif à chauqe module pour ne plus retrouver ses erreurs.
 Nous avons également rencontrer assez fréquemment des erreurs au niveau des pointeurs, certains fonctions nécessitant l'utilisation de pointeur pour modifier la valeur tandis que d'autres n'en avaient pas besoin.
-Et pusi, il y avait la difficulté sur l'interphace graqphisue qui ne voulait pas toujours fonctionner comme nous le voulions.
+Et pusi, il y avait la difficulté sur l'interphace graphique qui ne voulait pas toujours fonctionner comme nous le voulions.
 Néanmoins, nous avons réussi avec assez d'acharnement à résoudre ces problèmes (normalement).
+Une autre difficulté fu la sauvegarde,car dans nos fonctions on envoie l'adresse de la cagnotte et donc pour écrire dans le fichier sauvegarde nous souhaitions écrire la valeur se la cagnotte et non pas l'adresse hors l'adresse était écrite, si nous rajoutions une * devant la cagnotte pour dire que nous voulons la valeur sur laquelle le pointeur pointe dans le fprintf() pour écrire dans le fichier alors cette fois si un segmentation fault etait présent.
 
 
 

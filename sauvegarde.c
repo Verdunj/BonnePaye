@@ -7,7 +7,7 @@
 
 /* Attention, lorsque encrypter est utiliser, il faut vérifier la valeur de retour, pour savoir si la sauvegarde à bien était crée*/
 
-int encrypter(joueur j, joueur listeJ[], int cagnotte, int liste_mois[], int nb_tour, courrier listeC[], acquisition listeA[]){
+int encrypter(joueur j, joueur listeJ[], int *cagnotte, int liste_mois[], int nb_tour, courrier listeC[], acquisition listeA[]){
   int i, k;
   char s[MAX];
   FILE * f;
@@ -18,7 +18,7 @@ int encrypter(joueur j, joueur listeJ[], int cagnotte, int liste_mois[], int nb_
     fprintf(stderr, "Erreur lors de l'ouverture du fichier\n");
     return 0;
   }
-  fprintf(f, "%d %d %d %d\n", nb_tour, j.numJ, listeJ[0].numJ, cagnotte);
+  fprintf(f, "%d %d %d %d\n", nb_tour, j.numJ, listeJ[0].numJ,*cagnotte);
   
   for(i = 1; i < listeJ[0].numJ ; i++){
     fprintf(f, "%s %d %d %d %d %d %d %d %d\n", listeJ[i].Joueur, listeJ[i].numJ, listeJ[i].total, listeJ[i].c, listeJ[i].pret, listeJ[i].epargne, listeJ[i].type, listeJ[i].nb_courrier, listeJ[i].nb_acquisition);
