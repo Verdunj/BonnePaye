@@ -8,6 +8,6 @@
 
 int lance_des(joueur *j, int *cagnotte);
 
-void jouer_tour(int nJ, joueur listeJ[], courrier listeC[],acquisition listeA[],evenement listeE[],int *cagnotte, int liste_mois, int nb_mois);
+void jouer_tour(int nJ, joueur listeJ[], courrier listeC[],acquisition listeA[],evenement listeE[],int *cagnotte, int liste_mois[], int nb_mois);
 
 #endif
