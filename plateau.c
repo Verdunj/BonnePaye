@@ -124,12 +124,13 @@ int case_loterie(joueur *j, joueur  liste[]){
   return 1;
 }
 
-int case_fin(joueur *j, courrier liste[]){
+int case_fin(joueur *j, courrier liste[], int liste_mois){
   j->total += 1500;
   livret(j);
   paye_courrier(j, liste);
   paye_pret(j);
   j->c = 0;
+  liste_mois[j->numJ]++;
   return 1;
 }
 
@@ -151,7 +152,7 @@ int est_case_fin(int n){
   return 0;
 }
   
-int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte){
+int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois){
   int i;
   if (est_case_courrier(j->c) != 0)
     tombe_case_courrier(est_case_courrier(j->c), j, listeC);
@@ -238,7 +239,7 @@ int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition lis
 
       else{
 	if(est_case_fin(j->c) != 0)
-	  case_fin(j, listeC);
+	  case_fin(j, listeC, liste_mois);
       }
     }
   }
