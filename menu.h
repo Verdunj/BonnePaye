@@ -9,7 +9,7 @@
 #include "tour.h"
 
 
-void intialiser(int *nb_tour, int liste_mois, courrier listeC[], acquisition listeA[], joueur listeJ[],evenement listeE[], int *nJ,int *cagnotte,);
+void intialiser(int *nb_tour, int liste_mois, courrier listeC[], acquisition listeA[], joueur listeJ[],evenement listeE[], int *nJ,int *cagnotte);
 
 /* initialise la partie avec choix de prendre une sauvegarde ou une nouvelle partie, et si c'est une nouvelle partie qui est choisit, demande du nombre de tours, de joueurs, etc. Cette fontion prend en paramètre, le nombre de tour, le numéro du tour en court, la liste des courrier, la liste des acquisitions, la liste des joueurs et ne numéro du joueur qui doit jouer (chacun de ses paramètre pour les modifier et les initialiser) */
 
