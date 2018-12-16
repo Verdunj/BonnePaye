@@ -4,7 +4,10 @@
 \usepackage[french]{babel}
 \usepackage{eurosym}
 
+\usepackage{hyperref}
+
 \pagestyle{headings}
+
 
 \title{Rapport Bonne Paye}
 \author{Mérédith CERESOLE et Joris VERDUN}
@@ -15,279 +18,35 @@
 
 \newpage
 
+\tableofcontents
+
+\newpage
+
 \section{I. Organisation}
 
 \subsection{Création des cartes}
 Pour commencer la création du jeux, nous avons créer les cartes du jeu. Nous avons donc fait les structures des cartes courriers, acquisitions et evenements.
-Nous avons commencer par les courriers et leur avons donner la structures suivantes :
-
-\begin{verbatim}
-typedef struct{
-  char message[MAX]; 
-  int somme;
-  int valeur;
-  int numero;
-} courrier;
-\end{verbatim}
-
-avec :
-\begin{enumerate}
-\item message, qui est une chaine de caractère correspondant le contenue du courrier
-\item somme, qui est la somme à payer (ou la somme reçue dans certains cas)
-\item valeur, qui est égale à 0 si personne n'a pour ce mois tirer le courrier, le numéro du joueur qui à tirer le courrier durant le mois en cours
-\item numéro, qui est le numéro du courrier utiliser plus tard dans les fonctions sur les courriers.
-\end{enumerate}
-
-Puis, nous avons construit les acquisitions :
-
-\begin{verbatim}
-typedef struct{
-  char titre[MAX];
-  int achat;
-  int vente;
-  int commission;
-  int valeur;
-} acquisition;
-\end{verbatim}
-
-avec :
-\begin{enumerate}
-\item titre, qui est le nom de l'acquisition
-\item achat, qui est le prix d'achat de l'acquisition
-\item vente, qui est le prix de vente de l'acquisition, une fois que le joueur tombe sur une case vendez
-\item commission, qui est le prix de la commission lors de la vente
-\item valeur qui fonctionne de la même façon que pour les courriers
-\end{enumerate}
-
-Enfin, on construit les cartes evenements :
-
-\begin{verbatim}
-typedef struct{
-  char message[MAX];
-  int somme;
-} evenement;
-\end{verbatim}
-
-avec :
-\begin{enumerate}
-\item message, qui est l'evenement qui survient
-\item somme, qui est la somme à cotiser à la cagnotte ou à recevoir
-\end{enumerate}
+Nous leur avons donner pour commencer, une première version de structure que nous avons ensuite changer progressivement au fur et à mesure des problèmes ou des besoin que nous rencontrions.
 
 
 \subsection{Fonctions sur les cartes}
-On créer ensuite les fonctions qui se rapportent aux cartes créées. L'un s'est alors occupé des fonctions concernant les courriers et les évènements, tandis que l'autre s'est occupé des fonctions sur les acquisitions.
-
-Pour les fonctions concernant les courriers et les évènements, on a les fonctions suivantes:
-\begin{enumerate}
-\item pour les courriers :
-
-\begin{verbatim}
-int liste_courrier(courrier liste[])
-\end{verbatim}
-est la fonction que initialise la liste des courriers.
-Les fonctions :
-
-\begin{verbatim}
-int est_besoin_argent(courrier c); 
-
-int est_carte_assurance(courrier c);
-
-int est_carte_medecin(courrier c);
-
-int est_type_medecin(courrier c);
-
-int est_type_voiture(courrier c);
-\end{verbatim}
-
-qui permettent de différencier les courriers qui implique un évènement particulier. Ces fonctions retournent 1 si elles sont corrcetement executees.
-La fonction :
-\begin{verbatim}
-void afficher_courrier(courrier c);
-\end{verbatim}
-utilisée pour l'affichage d'un courrier sans interface graphique.
-\begin{verbatim}
-void case_courrier(courrier liste[], joueur *j);
-\end{verbatim}
-est la fonction qui exécute ce qu'il se passe lorsque un joueur doit tirer un courrier. Elle tire un courrier au hasard, vérifie que ce courrier n'est pas déjà à quelqu'un, l'affiche, puis si c'est une carte assurance, fait deux cas différents. Si ce n'est pas un ordinateur, il demande au joueur s'il souhaite acheté la carte assurance, et lui fait payer et l'ajoute à ses courriers s'il dit oui. Si c'est un ordinateur, il ne prend l'assurance que s'il a l'argent nécessaire, plus 300\euro{}, plus 10\% du prêt du joueur. Dans tous les cas (sauf si le joueur ne prend pas l'assurance), il ajoute le courrier quelqu'il soit, à la liste des courriers du joueurs, et sa valeur est modifiée pour q'un autre joueur ne le pioche pas tant que le joueur ne la pas remis dans la pioche.
-
-\begin{verbatim}
-void paye_courrier(joueur *j, courrier liste[]);
-\end{verbatim}
-est la fonction qui s'applique à la fin du mois pour faire payer au joueur les courriers qu'il doit payer, et les reposer dans la pioche. Cette fonction vérifie qi le joueur a ou non des assurances et applique les modifications nécessaire en fonction de cela (s'il a l'assurance médecin, il ne paye pas les courriers de type médecin; s'il a l'assurance voiture, il ne paye pas les courriers de type voiture).
-Enfin, la fonction :
-\begin{verbatim}
-int a_besoin_argent(joueur j);
-\end{verbatim}
-regarde si le joueur a ou non piocher durant le mois en cours, des besoin d'argent, afin de pouvoir lui proposer de les jouer en début de tour.
-
-\item pour les acquisition :
+On créer ensuite les fonctions qui se rapportent aux cartes créées. L'un s'est alors occupé des fonctions concernant les courriers et les évènements, tandis que l'autre s'est occupé des fonctions sur les acquisitions. Pour les courriers, nous avons créé des fonctions pour piocher un courrier, et pour le payer à la fin du mois, avec ajouter ultérieurement, des condition pour pouvoir faire jouer un ordinateur (s'il a plus l'argent nécessaire, plus 300\euro{}, plus 10\% du prêt du joueur, alors un ordinateur achètera une carte assurance). Dans tous les cas (sauf si le joueur ne prend pas l'assurance). Toujours pour les courriers, on créer plusieurs fonctions pour différencier les différents type de courrier, et pour déterminer si un joueur possède des carte besoin d'argent. De plus, on écrit une fonction ui a pour but d'initailiser la liste des courriers. On ajoute également une première version de fonction qui affiche les courriers sans interface graphique.
+Pour les acquisitions,
 
 
 
 
 
-
-
-
-
-
-\item pour les évènements :
-\begin{verbatim}
-int liste_evenement(evenement liste[]);
-\end{verbatim}
-la fonction qui initialise la liste des évènements.
-\begin{verbatim}
-void afficher_evenement(evenement e);
-\end{verbatim}
-la fonction qui affiche un évènement.
-\begin{verbatim}
-void case_evenement(joueur *j, evenement liste[], int *cagnotte);
-\end{verbatim}
-qui est la fonction qui applique l'évènement. Si la somme est négative, elle ajoute la somme au total du joueur car l'évènement dira garder l'argent, et si la somme est positive, elle la retirera du total du joueur car l'évènement dira cotiser pour la cagnotte.
-\end{enumerate}
-
+Enfin, pour les évènements, on fait une fonction qui initialise la liste des évènements et une qui pioche un courrier et donne l'argent au joueur, ou le fait payer selon ce que dit l'évènement. Ici aussi, on fait une première version d'affichage d'évènement sans interface graphique.
 
 \subsection{joueur}
 Nous nous sommes ensuite interressé aux joueurs dont la création est devenu indispensable pour les fonctions précédemment créées.
-Nous avons donc en premier lieu, créer la structure des joueurs :
-\begin{verbatim}
-typedef struct{
-  char Joueur[MAX];
-  int numJ;
-  int total;
-  int c;
-  courrier sesCourriers[NBCOURRIER];
-  int nb_courrier;
-  acquisition sesAcquisitions[NBACQUI];
-  int nb_acquisition;
-  int pret;
-  int epargne;
-  int type;
-} joueur;
-\end{verbatim}
-Dans cette structure :
-\begin{enumerate}
-\item Joueur correspond au nom du joueur,
-\item numJ correspond au numéro du joueur, nécessaire pour l'utilisation de plusieurs joueurs dans certaines fonctions futures,
-\item total correspond à la somme totale que possède le joueur,
-\item c correspond à la case sur laquelle se trouve le joueur,
-\item sesCourriers correspond à la liste des courriers que possède le joueur,
-\item nb\_courrier correspond au nombre de courriers que possède le joueur,
-\item sesAcquisitions correspond à la liste des acquisitions que possède le joueur,
-\item nb\_acquisition correspond au nombre d'acquisition que possède le joueur,
-\item pret correspond au montant total des pret du joueur
-\item epargne correpsond au montant total épargné par le joueur
-\item type correspond au type de joueur (ordinateur ou non-ordinateur).
-\end{enumerate}
-Cette structure n'a pas été construite en une seule fois, elle a été construite petit à petit selon les besoins rencontrés dans les différentes fonctions créer ultérieurement.
-
-On créer en même temps la fonction de lancer de dés :
-\begin{verbatim}
-int lance_des(joueur *j, int *cagnotte){
-  int i;
-  i = rand()%6 + 1;
-  if (i == 6){
-    j->total += (*cagnotte);
-    (*cagnotte) = 0;
-  }
-  if (j->c + i > 31)
-    j->c = 31;
-  else
-    j->c += i;
-  return j->c;
-}
-\end{verbatim}
-qui reproduit un lancer de dés et fait avancer le joueur jusqu'à la bonne case.
-
+Nous avons donc en premier lieu, créer la structure des joueurs, et l'avons complètée tout au long de la réalisation du jeu.
 
 A la suite de cela, tandis que l'un de nous à commencé à s'occuper de l'interface graphique, l'autre a commencé à créer les fonctions de plateau et nécessaire au lancement d'une partie.
 
 \subsection{fonctions du plateau}
-Premièrement, nous avons créer les fonctions qui réalisent les différents évènements qui se déroule selon la case sur laquelle se trouve le joueur.
-
-\begin{verbatim}
-int est_case_courrier(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer les cases courriers du plaau, et qui retourne le nombre de courriers à piocher.
-
-\begin{verbatim}
-int tombe_case_courrier(int n, joueur *j, courrier liste[]);
-\end{verbatim}
-est la fonction qui selon le nombre de courriers à piocher, exécuter la fonction case\_courrier définit précédemment (dans courrier.h).
-
-\begin{verbatim}
-int est_case_payer_banque(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer les cases où il faut payer à la banque une certaines sommes, et cette somme est retournée par la fonction.
-
-\begin{verbatim}
-int est_case_acquisiton(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer les cases acquisitions.
-
-\begin{verbatim}
-int est_case_evenement(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer les cases évènements.
-
-\begin{verbatim}
-int est_case_concours(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case concours.
-
-\begin{verbatim}
-int est_course_velo(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case course de vélos.
-
-\begin{verbatim}
-int est_case_travaux(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case travaux.
-
-\begin{verbatim}
-int est_case_anniversaire(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case anniversaire.
-
-\begin{verbatim}
-int est_case_retour_en_arriere(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case retour en arrière.
-
-\begin{verbatim}
-int est_case_vendez(int n);
-\end{verbatim}
-est la fontion qui permet de déterminer les cases vendez.
-
-\begin{verbatim}
-int est_case_loterie(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case loterie.
-
-\begin{verbatim}
-int est_case_fin(int n);
-\end{verbatim}
-est la fonction qui permet de déterminer quelle est la case jour de paye.
-
-Toutes ses fonctions retourne 0, le numéro de case rentré ne fait pas partie des numéro de case des cases determinées par les fonctions. Elles retourne sinon, 1 ou un autre nombre, selon les spécificités des fonctions.
-On créer ensuite deux fonctions nécessaire à l'exécution du déroulement de l'évènement lié à une case.
-
-\begin{verbatim}
-int case_loterie(joueur *j, joueur  liste[]);
-\end{verbatim}
-est la fonction qui demande au joueur s'il veut participer pour 100\euro, les fait payer, fait payer de la part de la banque 1000\euro, puis demande au joueur quel numéro ils choissisent avant de lancer le dés et de remettre la somme total au joueur gagnant.
-
-\begin{verbatim}
-int case_fin(joueur *j, courrier liste[], int liste_mois);
-\end{verbatim}
-est la fonction qui s'applique à la fin du mois (le jour de paye) et fait payer les courriers, verse les intérets au joueur, et lui fait payer 10\% du montant du pret, en plus de lui demander s'il veut ou non rembourser plus de son pret.Ensuite, elle positionne le joueur sur la case 0.
-
-\begin{verbatim}
-int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois);
-\end{verbatim}
-est la fonction qui pour un joueur qui vient de jouer, regarde sur quelle case il se trouve et exécute la fonction qu'il faut appliquer sur cette case.
+Premièrement, nous avons créer les fonctions qui réalisent les différents évènements qui se déroule selon la case sur laquelle se trouve le joueur. Premièrement, nous avons créer différents fonction qui à partir du numéro de la case permet de déterminer de quelle case il s'agit. Nous avons également écrit deux trois fonction qui réalise le déroulement de l'évènement selon la case. Enfin, nous avons fait une fonction joueur avance qui fait ce qu'il se passe après qu'un joueur ait déplacé son pion (elle détermine de quelle case il s'agit et exécute le bon déroulement).
 
 
 \subsection{interface carte}
@@ -312,62 +71,14 @@ est la fonction qui pour un joueur qui vient de jouer, regarde sur quelle case i
 
 \subsection{livret d'épargne et pret}
 Nous avons ensuite créer les fonctions liées aux prêts et au livrets d'épargne.
-
-\begin{verbatim}
-void choisi_pret(joueur *j);
-\end{verbatim}
-est la fonction qui propose au joueur de prendre un prêt, et si oui de combien.
-
-\begin{verbatim}
-void paye_pret(joueur *j);
-\end{verbatim}
-est la fonction qui fait payer, à la fin du mois, 10\% du pret, et propose de payer plus (s'il y a prêt à payer).
-
-\begin{verbatim}
-int interer(int montant);
-\end{verbatim}
-est la fonction qui détermine le montant des intérêts touchés en fonction de la somme totale déposée sur le livret d'épargne.
-
-\begin{verbatim}
-void livret(joueur *j);
-\end{verbatim}
-est la fonction qui donne au joueur, à la fin du mois, le montant des intérêts touchés par le joueur en fonction du montant de l'épargne déposé.
-
-\begin{verbatim}
-void depose_ordi(joueur *j);
-\end{verbatim}
-est la fonction qui permet de déterminer quand et combien d'argent un ordinateur doit déposer sur son livret d'épargne.
-
-\begin{verbatim}
-void depose_joueur(joueur *j);
-\end{verbatim}
-est la fonction qui demande à un joueur, s'il veut ou non déposer de l'argnet sur son livret d'épargne.
-
-\begin{verbatim}
-void retire_argent_j(joueur *j);
-\end{verbatim}
-est la fonction qui propose à un joueur de retirer de l'argent, et si oui, combien.
-
-\begin{verbatim}
-void retire_argent_o(joueur *j);
-\end{verbatim}
-est la fonction qui détermine combien un ordinateur doit-il retirer de son livret d'épargne.
+IL nous a alors fallut faire une différence selon si le joueur est un ordinateur ou non car les fonctions nécessitent de faire un choix. Ainsi, pour le livret d'aprgne, nous avons programmé deux fontions qui permettent de trouver les intérêt touché en fonction de la somme posée sur le livret d'épargne, et de les donner au joueur concerné, à la fin du mois. Nous avons ensuite fait une fonction pour demander au joueur s'il veut ou non déposer de l'argent, et une pour l'ordinateur. Nous avons fait de même pour retirer de l'argent.
 
 
 \subsection{menu}
 Les fonctions du module crée ensuite (menu.c) ont pour but d'initialiser le jeu avant de pouvoir réaliser une partie.
 
-La fonction :
-\begin{verbatim}
-void initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[], joueur listeJ[],evenement listeE[], int *nJ,int *cagnotte);
-\end{verbatim}
-est la fonction qui permet soit de charger une partie, grâce à des fonctions annexes créées ultérieurement, soit d'initialiser les paramètres nécessaires pau dédéroulement d'un partie.
-
-La fonction :
-\begin{verbatim}
-int jouer();
-\end{verbatim}
-est la fonction qui permet de joueur une partie.
+La fonction initialiser est la fonction qui permet soit de charger une partie, grâce à des fonctions annexes créées ultérieurement, soit d'initialiser les paramètres nécessaires pau dédéroulement d'un partie.
+On fait ensuite la fonction jouer qui exécute une partie.
 
 Le main qui suit dans le module, est le main principale, permettant de jouer.
 
@@ -375,11 +86,24 @@ Le main qui suit dans le module, est le main principale, permettant de jouer.
 On créer par la suite les fonctions permettant de créer une sauvagerde et de la charger.
 
 La première fonction, surnommée encrypter, prend en paramètre le joueur qui vient de jouer, la liste des joueurs, la cagnotte, le numérot du mois en cours, la liste du nombre de mois qu'on fait chaque joueur, le nombre de mois maximum, la liste des courriers, la liste des acquisitions, et les note tous, selon un ordre précis, sur un fichier qui contiendra la sauvegarde.
-
 La deuxième fonction, surnommée decrypter, prend en paramètre l'adresse des même paramètre que pour encrypter, et à l'aide d'un fichier de sauvegarde demandé au joueur, il récupère les informations nécessaire qu'il place dans les adresses en paramètres.
 
 
 \subsection{tour}
+Dans ce module, on créer une fonction lancer\_des qui réalise le lancer d'un dés par un jour et le fait avancer sur le plateau (modifie le numéro de la case sur laquelle il se trouve), et une fonction qui effectue ce qu'il se passe lors d'un tour (fait jouer tous les joueurs, avec les différentes conditions posées).
+
+\subsection{Makefile}
+Nous avons ensuite fait un makefile permettant l'exécution de tous les différents modules et de lancer une partie.
+
+\subsection{interface graphique}
+Enfin, nous avons complété l'interface graphique.
+
+\section{II. Difficultés}
+Tout au long de la réalisation du jeu, nous avons rencontrer différents problèmes. Pour commencer, le grand nombre de modules entremêlés posait des problèmes pour l'exécution du jeu (multiples définitions et définitions croisées). Nous avons donc regroupé certains modules, et placé des ifndef... define... endif à chauqe module pour ne plus retrouver ses erreurs.
+Nous avons également rencontrer assez fréquemment des erreurs au niveau des pointeurs, certains fonctions nécessitant l'utilisation de pointeur pour modifier la valeur tandis que d'autres n'en avaient pas besoin.
+Et pusi, il y avait la difficulté sur l'interphace graqphisue qui ne voulait pas toujours fonctionner comme nous le voulions.
+Néanmoins, nous avons réussi avec assez d'acharnement à résoudre ces problèmes (normalement).
+
 
 
 
