@@ -8,23 +8,23 @@
 #define NBEVEN 23
 
 typedef struct{
-  char message[MAX];
-  int somme;
+  char message[MAX]; /* le message du courrier */
+  int somme; /* le montant du courrier */
   int valeur; /* = 0 si personne ne la détient, = n si le joueur n la possède */
-  int numero;
+  int numero; /* le numéro du courrier */
 } courrier;
 
 typedef struct{
-  char titre[MAX];
-  int achat;
-  int vente;
-  int commission;
-  int valeur;
+  char titre[MAX]; /* le nom de l'acquisition */
+  int achat; /* le prix d'achat */
+  int vente; /* le prix de vente */
+  int commission; /* le montant de la commission */
+  int valeur; /* = 0 si personne ne la détient, = n si le joueur n la possède */
 } acquisition;
 
 typedef struct{
-  char message[MAX];
-  int somme;
+  char message[MAX]; /* le message de l'évènement */
+  int somme; /* la somme à cotiser ou à recevoir */
 } evenement;
 
 #endif
