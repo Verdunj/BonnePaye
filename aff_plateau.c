@@ -475,7 +475,7 @@ event = MLV_get_event(NULL, NULL, NULL,
       i=1;
     }
     else if( x>=300 && y>=400 && x<=380 && y<=420){
-      encrypter(j,tabJ,cagnotte,liste_mois,nb_tour,listeC,listeA);
+      encrypter(j,tabJ,*cagnotte,liste_mois,nb_tour,listeC,listeA);
       aff_jeu(tabJ);
       i=1;
     }
