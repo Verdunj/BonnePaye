@@ -7,7 +7,7 @@
 
 /* Attention, lorsque encrypter est utiliser, il faut vérifier la valeur de retour, pour savoir si la sauvegarde à bien était crée*/
 
-int encrypter(joueur j, joueur listeJ[], int cagnotte, int tour, int nb_tour, courrier listeC[], acquisition listeA[]){
+int encrypter(joueur j, joueur listeJ[], int cagnotte, int liste_mois, int nb_tour, courrier listeC[], acquisition listeA[]){
   int i, k;
   char s[MAX];
   FILE * f;
@@ -18,7 +18,7 @@ int encrypter(joueur j, joueur listeJ[], int cagnotte, int tour, int nb_tour, co
     fprintf(stderr, "Erreur lors de l'ouverture du fichier\n");
     return 0;
   }
-  fprintf(f, "%d %d %d %d %d\n", tour, nb_tour, j.numJ, listeJ[0].numJ, cagnotte);
+  fprintf(f, "%d %d %d %d\n", nb_tour, j.numJ, listeJ[0].numJ, cagnotte);
   for(i = 1; i < listeJ[0].numJ ; i++){
     fprintf(f, "%s %d %d %d %d %d %d %d %d\n", listeJ[i].Joueur, listeJ[i].numJ, listeJ[i].total, listeJ[i].c, listeJ[i].pret, listeJ[i].epargne, listeJ[i].type, listeJ[i].nb_courrier, listeJ[i].nb_acquisition);
     for(k = 0 ; k < listeJ[i].nb_courrier ; k++)
@@ -30,6 +30,8 @@ int encrypter(joueur j, joueur listeJ[], int cagnotte, int tour, int nb_tour, co
     fprintf(f, "%s %d %d %d\n", listeC[i].message, listeC[i].somme, listeC[i].valeur, listeC[i].numero);
   for(i = 0 ; i < NBACQUI ; i++)
     fprintf(f, "%s %d %d %d %d\n", listeA[i].titre, listeA[i].achat, listeA[i].vente, listeA[i].commission, listeA[i].valeur);
+  for(i = 1 ; i < listeJ[0].numJ + 1 ; i++)
+    fprintf(f, "%d\n", liste_mois[i]);
   return 1;
 }
 
@@ -48,6 +50,8 @@ int decrypter(FILE *f, int *nJ, joueur listeJ[], int *cagnotte, int *tour, int *
     fscanf(f, "%s %d %d %d", listeC[i].message, &listeC[i].somme, &listeC[i].valeur, &listeC[i].numero);
   for(i = 0 ; i < NBACQUI ; i++)
     fscanf(f, "%s %d %d %d %d", listeA[i].titre, &listeA[i].achat, &listeA[i].vente, &listeA[i].commission, &listeA[i].valeur);
+  for(i = 1 ; i < listeJ[0].numJ + 1 ; i++)
+    fscanf(f, "%d\n", &liste_mois[i]);
   return 1;
 }
 
