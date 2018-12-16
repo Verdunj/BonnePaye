@@ -21,7 +21,7 @@ void afficher_courrier_interface(courrier c); /*première version de fonction po
 
 void afficher_courrier(courrier c); /* fonction pour afficher un courrier dans le terminal */
 
-void case_courrier(courrier liste[], joueur *j); /* exécute la picoeh d'un courrier par un jouer, si ce joueur n'est pas un ordinateur et pioche une carte assurance, on lui propose de l'acheté, si c'est un ordinateur, on lui fait acheter sous certaines conditions ; ajoute en même temps le courrier piocher à la liste des courriers du joueur (seullemtn s'il l'achète dans le cas d'une assurance) */
+void case_courrier(courrier liste[], joueur *j); /* exécute la pioche d'un courrier par un joueur j, si ce joueur n'est pas un ordinateur et pioche une carte assurance, on lui propose de l'acheté, si c'est un ordinateur, on lui fait acheter sous certaines conditions ; ajoute en même temps le courrier piocher à la liste des courriers du joueur (seullemtn s'il l'achète dans le cas d'une assurance) ; la pioche est faite aléatoirement dans liste*/
 
 void paye_courrier(joueur *j, courrier liste[]); /* fonction qui s'exécute à la fin d'un mois, et fait payer au joueur les courriers qu'il doit payer tout en les supprimant de la liste de ses courriers */
 
