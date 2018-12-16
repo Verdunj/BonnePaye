@@ -8,7 +8,7 @@
 
 
 
-void initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[], joueur listeJ[],evenement listeE[], int *nJ,int *cagnotte){
+void initialiser(int *nb_tour, int liste_mois, courrier listeC[], acquisition listeA[], joueur listeJ[],evenement listeE[], int *nJ,int *cagnotte){
   int i, type_partie, choix, nb_ordi = 0;
   char fichier[MAX];
   FILE *f;
@@ -24,7 +24,7 @@ void initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[
       fprintf(stdout, "Entrez le chemin du fichier de sauvegarde\n");
     while(fscanf(stdin, "%s", fichier) != 1);
     f = fopen(fichier, "r");
-    decrypter(f, nJ, listeJ, cagnotte, tour, nb_tour, listeC, listeA);
+    decrypter(f, nJ, listeJ, cagnotte, liste_mois, nb_tour, listeC, listeA);
   }
   
   /* sinon, on définit les paramètres de la nouvelle partie */
@@ -92,18 +92,23 @@ void initialiser(int *nb_tour, int *tour, courrier listeC[], acquisition listeA[
 
 
 int jouer(){
-  int quitter = 0, numT = 0, cagnotte = 0, nb_tour = 0, nJ = 0;
+  int quitter = 0, numT = 0, cagnotte = 0, nb_tour = 0, nJ = 0, i, somme;
+  int liste_mois[7]
   courrier listeC[NBCOURRIER];
   acquisition listeA[NBACQUI];
   evenement listeE[NBEVEN];
   joueur listeJ[7];
   MLV_create_window( "La Bonne Paye", "Bonne Paye", 1000, 800);
-  initialiser(&nb_tour, &numT, listeC, listeA, listeJ,listeE, &nJ,&cagnotte);
+  initialiser(&nb_tour, liste_mois, listeC, listeA, listeJ,listeE, &nJ,&cagnotte);
   aff_jeu(listeJ);
-  while(quitter != 1 && numT < nb_tour){
-    
+  for(i =  1 ; i < listeJ[0].numJ + 1 ; i++)
+    liste_mois[i] = 0;
+  somme = 0;
+  while(quitter != 1 && somme < listeJ[0].numJ * nb_tour){
+    somme = 0;
     jouer_tour(nJ, listeJ, listeC, listeA, listeE, &cagnotte);
-    numT++;
+    for(i =  1 ; i < listeJ[0].numJ + 1 ; i++)
+    	somme += liste_mois[i];
   }
   return 1;
 }
