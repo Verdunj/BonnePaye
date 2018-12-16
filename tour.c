@@ -19,27 +19,29 @@ int lance_des(joueur *j, int *cagnotte){
   return j->c;
 }
 
-void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte){
+void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois, int nb_mois){
   int i, choix;
   for(i = nJ ; i < listeJ[0].numJ ; i++){
-    if(listeJ[i].type == 1){
-      do
-	fprintf(stdout, "Voulez-vous returer de l'argent (attention cela coûtera 150€). (Oui : 1 / Non : 2)\n");
-      while(fscanf(stdin, "%d", &choix) != 1 || (choix != 1 && choix != 2));
-      if(choix == 1)
-	retire_argent_j(&listeJ[i]);
-      if(listeJ[i].c <= 23)
-	depose_joueur(&listeJ[i]);
+    if(liste_mois[listeJ[i].numJ] < nb_mois){
+      if(listeJ[i].type == 1){
+        do
+	  fprintf(stdout, "Voulez-vous returer de l'argent (attention cela coûtera 150€). (Oui : 1 / Non : 2)\n");
+        while(fscanf(stdin, "%d", &choix) != 1 || (choix != 1 && choix != 2));
+        if(choix == 1)
+	  retire_argent_j(&listeJ[i]);
+        if(listeJ[i].c <= 23)
+	  depose_joueur(&listeJ[i]);
+      }
+      else{
+        retire_argent_o(&listeJ[i]);
+        if(listeJ[i].c == 0)
+	  depose_ordi(&listeJ[i]);
+      }
+      printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
+      lance_des(&listeJ[i], cagnotte);
+      joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte);
+      aff_jeu(listeJ);
     }
-    else{
-      retire_argent_o(&listeJ[i]);
-      if(listeJ[i].c == 0)
-	depose_ordi(&listeJ[i]);
-    }
-    printf("on lance le dé du joueur %d\n",listeJ[i].numJ);
-    lance_des(&listeJ[i], cagnotte);
-    joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte);
-    aff_jeu(listeJ);
   }
 }
 
