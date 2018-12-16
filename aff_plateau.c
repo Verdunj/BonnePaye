@@ -406,11 +406,13 @@ void aff_jeu(joueur *j){
 void tour_joueur(joueur *j,joueur *tabJ){
   int i=0,x,y;
   MLV_Event event;
-  MLV_draw_adapted_text_box(200,200,"Tour joueur : %s",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j->Joueur);
+ 
+  while(i==0){
+     MLV_draw_adapted_text_box(5,300,"Tour joueur : %s",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j->Joueur);
   MLV_draw_text_box(250,250,70,20,"Continuer",9,
 		    MLV_COLOR_GREEN,MLV_COLOR_BLACK,MLV_COLOR_GREEN,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_draw_text_box(60,700,70,20,"PAUSE",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j->Joueur);
   MLV_actualise_window();
-  while(i==0){
     do{
 event = MLV_get_event(NULL, NULL, NULL,
 			  NULL, NULL,
@@ -421,6 +423,9 @@ event = MLV_get_event(NULL, NULL, NULL,
     }while( event != MLV_MOUSE_BUTTON);
     if(x>=250 && y>=250 && x<= 320 && y <= 270){
       i=1;
+    }
+    else if(x>=60 && y>=700 && x<=130 && y<=720){
+      pause(j,tabJ);
     }
   }
   aff_jeu(tabJ);
@@ -446,6 +451,30 @@ event = MLV_get_event(NULL, NULL, NULL,
     }
   }
     
+}
+
+void pause(joueur *j, joueur *tabJ){
+  int i=0,x,y;
+  MLV_Event event;
+  MLV_clear_window(MLV_COLOR_WHITE);
+  MLV_draw_text_box(300,300,80,20,"Continuer",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  MLV_actualise_window();
+  while(i==0){
+do{
+event = MLV_get_event(NULL, NULL, NULL,
+			  NULL, NULL,
+			  &x, &y, NULL,
+			  NULL);
+
+
+    }while( event != MLV_MOUSE_BUTTON);
+    if(x>=300 && y>=300 && x<= 380 && y <= 320){
+      aff_jeu(tabJ);
+      i=1;
+    }
+  }
+
+
 }
 
 /*void aff_bouton(){

@@ -39,4 +39,6 @@ void tour_joueur(joueur *j,joueur *tabJ);
 
 void lancer_de_aff();
 
+void pause(joueur *j,joueur *tabJ);
+
 #endif
