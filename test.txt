@@ -1,0 +1,258 @@
+1 1 1 1
+Vacances pour presque rien
+Payez 100€ 100 0 0
+Vacances à la neige
+Payez 250€ 250 0 1
+Facture Cours de langage des signes.
+Très pratique !
+Payez 100€ 100 0 2
+Facture Bla bla bla Télécomunications
+Tarifs préférentiels pour les supers bavard(e)s
+Payez 150€ 150 0 3
+Monsieur le Proviseur,
+Je sui le Papa de Toto. Je vous écri pour vous dire que comme j'ai la rougeole je ne pourré pas acisté ô cours cette semène.
+Signé :
+     Le Papa de Toto 0 0 4
+      PUB     
+  Assur'Enfant  
+En souscrivant, vous êtes définitivement protégé contre les privations de desserts et de télé, les punitions et les mauvaises notes. 0 0 5
+Facture Poissonier
+Ouvert uniquement pour le poisson d'avril
+Payez 100€ 100 0 6
+Coup de chance !
+Gros gain de Loto
+Recevez 450€ -450 0 7
+Ma chère belle-mère,
+C'est avec plaisir que je serais venu vous chercher à la gare, mais la voiture est en révision au garage. La gare est à cinq kilomètres de la maison, mais vous verez, c'est en descente.
+Votre dévoué,
+Hubert 0 0 8
+     PUB     
+Juste Unecorde
+Devenez un virtuose du violon! 0 0 9
+     PUB     
+ Achetez les Raquettes Petifuté.
+Elles permettent de jouer au tennis l'été et de marcher dans la neige l'hiver. 0 0 10
+Chère Maman,
+La colo est super mais je n'ai plus d'argent pour t'acheter un cadeau. Peux-tu m'en envoyer s'il te plait. Et n'oublie pas quand on aime on ne compte pas.
+Damien qui t'aime beaucoup, beaucoup
+... 0 0 11
+Madame Irma,
+Vous m'aviez prédit un grand voyage et beaucoup de réussite. Or je suis toujours gardien de phare. Etes-vous vraiment sûre de pouvoir lire l'avenir dans uen boule de pétanque ?
+René Laborde 0 0 12
+     PUB     
+Vaisselle EnCarton
+Garrantie incassable, idéale pour s'entraîner au frisbee. 0 0 13
+Vacances au soleil
+Payez 400€ 400 0 14
+Facture Jean Frémy, Doreur
+Rend vos affaires reluisantes et vos idées brillantes.
+Payez 50€ 50 0 15
+Facture Chez Coup de Ciseaux
+Tailleur sur mesure.Il vous va comme un gant !
+Payez 100€ 100 0 16
+Vacances en camping
+Payez 150€ 150 0 17
+Cher cousin François,
+Merci pour ton cadeau de Noël. Tu m'avais dit que ce serait des huîtres avec des algues. A la place j'ai reçu uen salade délicieuse avec de gros cailloux. Dis à quoi ça ressemble uen huître ?
+Cousin Geoffrey 0 0 18
+Cours particuliers
+ École de Karaté de Maître King Fu. Devenez ceinture noire en deux temps trois manchettes !
+Frais d'inscription 300€ 300 0 19
+Cours particuliers
+Décoration pâtissière.
+N'oubliez pas votre tablier, on en a jusqu'aux coudes!
+Frais d'inscription 250€ 250 0 20
+Coup de chance !
+Un investissement arrive à maturité
+Recevez 100€ -100 0 21
+Facture Coiffeur (et Jardinier)
+ Pour tous types de coupes en semaine et le week end !
+Payez 50€ 50 0 22
+Facture société des étincelles électriques
+Ah le choc!
+Payez 50€ 50 0 23
+Facture à la Bonne Bouche
+Sandwishs et salades pour vos petites faims !
+Payez 50€ 50 0 24
+Cours particuliers
+La salsa dans tous ses états !
+Trouvez un partenaire et c'est parti !
+Frais d'inscription 150€ 150 0 25
+Coup de chance !
+Un ami vous rembourse un emprunt
+Recevez 50€ -50 0 26
+Dr. Sarah COURCI
+Payez 300€ 300 0 27
+Dr. Hector TICOLI
+ Payez 100€ 100 0 28
+Dr. Sophie STIQUEY
+Payez 450€ 450 0 29
+Dr. Guy LIGUILI
+Payez 300€ 300 0 30
+Dr. Barbe ITURIQUE
+Payez 50€ 50 0 31
+Dr. Sévère MÉJUSTE
+Payez 50€ 50 0 32
+Dr. Joe SKULTE
+Payez 250€ 250 0 33
+Au pare-chocs de choc
+Installation d'un siège éjectable pour passager casse-pieds !
+Somme à régler 100€ 100 0 34
+Garage de la Belle Bielle
+Installation de fusées pour une meilleure reprise !
+Somme à régler 450€ 450 0 35
+Chez Hippo d'Échappement
+Lunette spéciales pour voiture qui ont les phares qui louchent.
+Somme à régler 300€ 300 0 36
+Garage de la Roue Libre
+Essuie-glace anti-contravention. Bougent et coupent dès qu'un policier s'en approche.
+Somme à régler 150€ 150 0 37
+Chez D.Glingé
+Installation de nouveaux pare-chocs... Dernier modèle, entièrement en chewing-gum !
+Somme à régler 250€ 250 0 38
+Facture La Voiture Écolo
+Sans moteur, enfin une voiture qui ne pollue pas ! Fonctionne seulement dans les descentes et par vent arrière.
+Payez 450€ 450 0 39
+O.Marteau
+Remplacement des pneus lisses en pneus cloutés !
+Somme à régler 300€ 300 0 40
+Assur'Auto
+Cette carte annule toutes vos factures de garagiste.
+Payez 600€ 600 0 41
+Assur'Auto
+Cette carte annule toutes vos factures de garagiste.
+Payez 600€ 600 0 42
+Assur'Auto
+Cette carte annule toutes vos factures de garagiste.
+Payez 600€ 600 0 43
+Médic'Assur
+Cette carte annule tous vos honoraire de médecin.
+Payez 450€ 450 0 44
+Médic'Assur
+Cette carte annule tous vos honoraire de médecin.
+Payez 450€ 450 0 45
+Médic'Assur
+Cette carte annule tous vos honoraire de médecin.
+Payez 450€ 450 0 46
+Besoin d'argent ?
+Parriez une somme inférieur à 300€ et lancez le dés. Si vous obtenez un 5 ou un 6, touchez 10 fois votre mise auprès de la banque. Si vous obtenez n'importe qu'elle autre chiffre, versez votre mise à la Cagnotte de la Bonne Paye. Cette carte peut être utilisée à n'importe quel moment. 0 0 47
+Besoin d'argent ?
+Parriez une somme inférieur à 300€ et lancez le dés. Si vous obtenez un 5 ou un 6, touchez 10 fois votre mise auprès de la banque. Si vous obtenez n'importe qu'elle autre chiffre, versez votre mise à la Cagnotte de la Bonne Paye. Cette carte peut être utilisée à n'importe quel moment. 0 0 48
+Besoin d'argent ?
+Parriez une somme inférieur à 300€ et lancez le dés. Si vous obtenez un 5 ou un 6, touchez 10 fois votre mise auprès de la banque. Si vous obtenez n'importe qu'elle autre chiffre, versez votre mise à la Cagnotte de la Bonne Paye. Cette carte peut être utilisée à n'importe quel moment. 0 0 49
+Déguisement de super héro
+ Prix d'achat : 450€
+ Prix de vente : 1200€
+ Montant de la Commission :  100€
+ Voulez vous l'acheter ?  450 1200 100 0
+Tracteur Agricole
+ Prix d'achat : 2850€
+ Prix de vente : 3600€
+ Montant de la Commission : 300€
+Voulez vous l'acheter? 2850 3600 300 0
+Stande de glace
+ Prix d'achat : 3000€
+ Prix de vente : 7500€
+ Montant de la Commission : 300€
+Voulez vous l'acheter? 3000 7500 300 0
+Caravane
+ Prix d'achat : 3300€
+ Prix de vente : 4800€
+ Montant de la Commission : 350€
+Voulez vous l'acheter? 3300 4800 350 0
+Cabane de Luxe dans le désert
+ Prix d'achat : 3000€
+ Prix de vente : 4500€
+ Montant de la Commission: 450€
+Voulez vous l'acheter? 3000 4500 450 0
+Robot Chien
+ Prix d'achat : 600€
+ Prix de vente : 1650€
+ Montant de la Commission: 100€
+Voulez vous l'acheter? 600 1650 100 0
+Collection de B.D
+ Prix d'achat : 600€
+ Prix de vente : 1650€
+ Montant de la Commission: 50€
+Voulez vous l'acheter? 600 1650 50 0
+Oeuf de dinosaure
+ Prix d'achat : 2100€
+ Prix de vente : 4200€
+ Montant de la Commission: 200€
+Voulez vous l'acheter? 2100 4200 200 0
+Paire de jumelles à vision nocturne
+ Prix d'achat : 2400€
+ Prix de vente : 3600€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 2400 3600 150 0
+Fourmilière géante
+ Prix d'achat : 1050€
+ Prix de vente : 1800€
+ Montant de la Commission: 100€
+Voulez vous l'acheter? 1050 1800 100 0
+Cheveux de Toutânkhamon
+ Prix d'achat : 4500€
+ Prix de vente : 7500€
+ Montant de la Commission: 300€
+Voulez vous l'acheter? 4500 7500 300 0
+Sous-vêtement du roi Louis XIV
+ Prix d'achat : 2100€
+ Prix de vente : 4200€
+ Montant de la Commission: 200€
+Voulez vous l'acheter? 2100 4200 200 0
+Cheval de course
+ Prix d'achat : 3300€
+ Prix de vente : 4800€
+ Montant de la Commission: 400€
+Voulez vous l'acheter? 3300 4800 400 0
+Camion de pizza
+ Prix d'achat : 1050€
+ Prix de vente : 1800€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 1050 1800 150 0
+Jacuzzi de luxe
+ Prix d'achat : 2400€
+ Prix de vente : 3600€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 2400 3600 150 0
+Vieux Tacot
+ Prix d'achat : 1050€
+ Prix de vente : 1800€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 1050 1800 150 0
+Bateau gonflable
+ Prix d'achat : 1000€
+ Prix de vente : 1800€
+ Montant de la Commission: 100€
+Voulez vous l'acheter? 1000 1800 100 0
+Collier de chien serti de diamants
+ Prix d'achat : 2850€
+ Prix de vente : 3600€
+ Montant de la Commission: 300€
+Voulez vous l'acheter? 2850 3600 300 0
+Baguette Magique
+ Prix d'achat : 2400€
+ Prix de vente : 3600€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 2400 3600 150 0
+Labyrinthe de maïs
+ Prix d'achat : 3000€
+ Prix de vente : 7500€
+ Montant de la Commission: 300€
+Voulez vous l'acheter? 3000 7500 300 0
+Tétine en or
+ Prix d'achat : 1050€
+ Prix de vente : 1800€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 1050 1800 150 0
+Stylo Gadget
+ Prix d'achat : 450€
+ Prix de vente : 1200€
+ Montant de la Commission: 100€
+Voulez vous l'acheter? 450 1200 100 0
+Collier de chien serti de diamants
+ Prix d'achat : 1050€
+ Prix de vente : 1800€
+ Montant de la Commission: 150€
+Voulez vous l'acheter? 1050 1800 150 0
+0

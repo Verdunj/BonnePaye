@@ -46,7 +46,7 @@ void jouer_tour(int nJ, joueur listeJ[], courrier listeC[], acquisition listeA[]
 	joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte, liste_mois);
 	retire_argent_o(&listeJ[i]);
       }
-      aff_jeu(listeJ);
+      aff_jeu(listeJ,cagnotte);
     }
   }
 }
