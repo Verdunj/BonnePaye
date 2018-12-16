@@ -29,7 +29,7 @@ int est_case_retour_en_arriere(int n);
 
 int case_loterie(joueur *j, joueur  liste[]);
 
-int case_fin(joueur *j, courrier liste[], int liste_mois);
+int case_fin(joueur *j, courrier liste[], int liste_mois[]);
 
 int est_case_vendez(int n);
 
@@ -37,7 +37,7 @@ int est_case_loterie(int n);
 
 int est_case_fin(int n);
 
-int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois);
+int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois[]);
 
 
 

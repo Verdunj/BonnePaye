@@ -89,11 +89,13 @@ int est_case_retour_en_arriere(int n){
 
 int case_loterie(joueur *j, joueur  liste[]){
   int i, loterie[liste[0].numJ], choix, gagnant, nb_joueur_participant = 0;
+  for(i = 1 ; i < liste[0].numJ + 1 ; i++)
+    loterie[i] = 0;
   for(i = j->numJ ; i < liste[0].numJ + 1 ; i++){
     if(liste[i].type == 1){ 
       do
 	fprintf(stdout, "%s, voulez-vous jouer à la loterie ? Si oui entrez 1, sinon, entrez 2\n", liste[i].Joueur);
-      while(fscanf(stdin, "%d", &choix) != 1 && choix != 1 && choix != 2);
+      while(fscanf(stdin, "%d", &choix) != 1 || (choix != 1 && choix != 2));
       if (choix == 1){
 	liste[i].total -= 100;
 	nb_joueur_participant++;
@@ -124,7 +126,7 @@ int case_loterie(joueur *j, joueur  liste[]){
   return 1;
 }
 
-int case_fin(joueur *j, courrier liste[], int liste_mois){
+int case_fin(joueur *j, courrier liste[], int liste_mois[]){
   j->total += 1500;
   livret(j);
   paye_courrier(j, liste);
@@ -152,7 +154,7 @@ int est_case_fin(int n){
   return 0;
 }
   
-int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois){
+int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition listeA[], evenement listeE[], int *cagnotte, int liste_mois[]){
   int i;
   if (est_case_courrier(j->c) != 0)
     tombe_case_courrier(est_case_courrier(j->c), j, listeC);
@@ -213,11 +215,11 @@ int joueur_avance(joueur *j, joueur listeJ[], courrier listeC[], acquisition lis
 		
   if(est_case_retour_en_arriere(j->c) != 0){
     if(j->c == 0)
-      case_fin(j, listeC);
+      case_fin(j, listeC, liste_mois);
     else{
       for(i = 1 ; i < listeJ[0].numJ ; i++){
 	listeJ[i].c--;
-	joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte);
+	joueur_avance(&listeJ[i], listeJ, listeC, listeA, listeE, cagnotte, liste_mois);
       }
     }
   }
