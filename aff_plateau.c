@@ -310,6 +310,48 @@ void aff_jeu(joueur *j){
   MLV_actualise_window();
 }
 
+
+void tour_joueur(joueur j){
+  int i=0,x,y;
+  MLV_Event event;
+  MLV_draw_adapted_text_box(200,200,"Tour joueur : ",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER/*j.Joueur*/);
+  MLV_draw_text_box(250,250,50,20,"Continuer",9,
+		    MLV_COLOR_GREEN,MLV_COLOR_BLACK,MLV_COLOR_GREEN,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+  while(i==0){
+    do{
+event = MLV_get_event(NULL, NULL, NULL,
+			  NULL, NULL,
+			  &x, &y, NULL,
+			  NULL);
+
+
+    }while( event != MLV_MOUSE_BUTTON);
+    if(x>=250 && y>=250 && x<= 300 && y <= 270){
+      i=1;
+    }
+  }
+}
+void lancer_dé_aff(){
+  int i=0,x,y;
+  MLV_Event event;
+   MLV_draw_text_box(250,250,70,20,"Lancer le dé",9,
+		    MLV_COLOR_GREEN,MLV_COLOR_BLACK,MLV_COLOR_GREEN,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER);
+    while(i==0){
+    do{
+event = MLV_get_event(NULL, NULL, NULL,
+			  NULL, NULL,
+			  &x, &y, NULL,
+			  NULL);
+
+
+    }while( event != MLV_MOUSE_BUTTON);
+    if(x>=250 && y>=250 && x<= 320 && y <= 270){
+      i=1;
+    }
+  }
+
+}
+
 /*void aff_bouton(){
 
 

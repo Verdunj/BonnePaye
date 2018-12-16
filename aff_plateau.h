@@ -35,4 +35,6 @@ void stat_j(joueur *j);
 
 void aff_jeu(joueur *j);
 
+void tour_joueur(joueur j);
+
 #endif
