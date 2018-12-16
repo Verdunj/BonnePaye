@@ -2,7 +2,7 @@ CC=gcc
 OPTIONS= -Wall `pkg-config --cflags MLV` `pkg-config --libs-only-other --libs-only-L MLV`
 MLV= `pkg-config --libs-only-l MLV`
 
-prog : acquisition.o aff_plateau.o menu.o courrier.o plateau.o evenement.o livret_epargne.o pret.o sauvegarde.o tour.o BonnePaye.o
+prog : acquisition.o aff_plateau.o menu.o courrier.o plateau.o evenement.o livret_epargne.o pret.o sauvegarde.o tour.o BonnePaye.o rapport.pdf
 	$(CC) $(OPTIONS) BonnePaye.o menu.o acquisition.o aff_plateau.o courrier.o plateau.o evenement.o livret_epargne.o pret.o sauvegarde.o tour.o $(MLV) -o BonnePaye
 
 BonnePaye.o :
@@ -37,4 +37,8 @@ sauvegarde.o : sauvegarde.c sauvegarde.h
 tour.o : tour.c tour.h
 	$(CC) $(OPTIONS) -c tour.c
 
+rapport.pdf :rapport.tex
+	pdflatex rapport.tex
+clean :
+	rm -f *.o *.pdf
 

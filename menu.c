@@ -100,7 +100,7 @@ int jouer(){
   joueur listeJ[7];
   MLV_create_window( "La Bonne Paye", "Bonne Paye", 1000, 800);
   initialiser(&nb_tour, liste_mois, listeC, listeA, listeJ,listeE, &nJ, &cagnotte);
-  aff_jeu(listeJ);
+  aff_jeu(listeJ,&cagnotte);
   for(i = 1 ; i < listeJ[0].numJ + 1 ; i++)
     liste_mois[i] = 0;
   somme = 0;

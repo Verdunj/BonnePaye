@@ -9,11 +9,12 @@ int lance_des(joueur *j, int *cagnotte){
   int i;
   i = rand()%6 + 1;
   if (i == 6){
-    j->total += (*cagnotte);
-    (*cagnotte) = 0;
+    j->total += (*cagnotte)-1;
+    (*cagnotte) = 1;
   }
   if (j->c + i > 31)
     j->c = 31;
+
   else
     j->c += i;
   return j->c;

@@ -390,14 +390,15 @@ MLV_actualise_window();
 }
 
 
-void aff_jeu(joueur *j){
+void aff_jeu(joueur *j,int *cagnotte){
   int i;
-  printf("affichage plateau");
+  
   MLV_clear_window(MLV_COLOR_WHITE);
   afficher_plateau();
   for(i=1;i<=j[0].numJ;i++){
     case_1a6(j[i]);
   }
+  MLV_draw_text(5,255,"Cagnotte : %d",MLV_COLOR_BLACK,*cagnotte);
   stat_j(j);
   MLV_actualise_window();
 }
@@ -430,7 +431,7 @@ event = MLV_get_event(NULL, NULL, NULL,
       pause(j,tabJ,cagnotte,liste_mois,nb_tour,listeC,listeA);
     }
   }
-  aff_jeu(tabJ);
+  aff_jeu(tabJ,cagnotte);
 }
 
 void lancer_de_aff(){
@@ -472,12 +473,12 @@ event = MLV_get_event(NULL, NULL, NULL,
 
     }while( event != MLV_MOUSE_BUTTON);
     if(x>=300 && y>=300 && x<= 380 && y <= 320){
-      aff_jeu(tabJ);
+      aff_jeu(tabJ,cagnotte);
       i=1;
     }
     else if( x>=300 && y>=400 && x<=380 && y<=420){
       encrypter(j,tabJ,cagnotte,liste_mois,nb_tour,listeC,listeA);
-      aff_jeu(tabJ);
+      aff_jeu(tabJ,cagnotte);
       i=1;
     }
   }

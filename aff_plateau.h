@@ -53,7 +53,7 @@ void stat_j(joueur *j);
 
 /* Il affiche différente stat concernant les joueurs, leur total, leur emprunt et leur épargne */
 
-void aff_jeu(joueur *j);
+void aff_jeu(joueur *j,int *cagnotte);
 
 /* appel la fonction case_1a6 pour chaque joueur appel la fonction stat_j appel la fonction afficher_plateau */
 
