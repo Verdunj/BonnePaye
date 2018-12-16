@@ -12,7 +12,7 @@ void afficher_evenement_interface(evenement e); /* première version d'un affich
 
 void afficher_evenement(evenement e); /* affiche un évènement sur le terminal */
 
-void case_evenement(joueur *j, evenement liste[], int *cagnotte); /* fait piocher un évènement à un joueur, et retire ou ajoute la  somme au total du joueur (selon si la carte est une carte garder l'argent ou cotiser pour la cagnotte) */
+void case_evenement(joueur *j, evenement liste[], int *cagnotte); /* fait piocher un évènement à un joueur j, et retire ou ajoute la  somme au total du joueur (selon si la carte est une carte garder l'argent ou cotiser pour la cagnotte) ; si la somme est reitrer du total du jouer, elle est ajouté à la cagnotte ; l'évènement est tiré aléatoirement dans liste*/
 
 
 #endif
