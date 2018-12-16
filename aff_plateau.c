@@ -406,7 +406,7 @@ void aff_jeu(joueur *j){
 void tour_joueur(joueur j,joueur *tabJ,int *cagnotte,int *liste_mois,int nb_tour, courrier *listeC,acquisition *listeA){
   int i=0,x,y;
   MLV_Event event;
-  printf("%d",&cagnotte);
+
  
   while(i==0){
      MLV_draw_adapted_text_box(5,300,"Tour joueur : %s",9,MLV_COLOR_BLACK,MLV_COLOR_BLACK,MLV_COLOR_WHITE,MLV_TEXT_LEFT,MLV_HORIZONTAL_CENTER,MLV_VERTICAL_CENTER,j.Joueur);
@@ -475,7 +475,8 @@ event = MLV_get_event(NULL, NULL, NULL,
       i=1;
     }
     else if( x>=300 && y>=400 && x<=380 && y<=420){
-      encrypter(j,tabJ,*cagnotte,liste_mois,nb_tour,listeC,listeA);
+      encrypter(j,tabJ,cagnotte,liste_mois,nb_tour,listeC,listeA);
+      aff_jeu(tabJ);
       i=1;
     }
   }

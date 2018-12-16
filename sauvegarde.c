@@ -19,6 +19,7 @@ int encrypter(joueur j, joueur listeJ[], int cagnotte, int liste_mois[], int nb_
     return 0;
   }
   fprintf(f, "%d %d %d %d\n", nb_tour, j.numJ, listeJ[0].numJ, cagnotte);
+  
   for(i = 1; i < listeJ[0].numJ ; i++){
     fprintf(f, "%s %d %d %d %d %d %d %d %d\n", listeJ[i].Joueur, listeJ[i].numJ, listeJ[i].total, listeJ[i].c, listeJ[i].pret, listeJ[i].epargne, listeJ[i].type, listeJ[i].nb_courrier, listeJ[i].nb_acquisition);
     for(k = 0 ; k < listeJ[i].nb_courrier ; k++)
